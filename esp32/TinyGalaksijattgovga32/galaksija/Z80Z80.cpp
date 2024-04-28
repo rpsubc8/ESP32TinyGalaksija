@@ -18,7 +18,7 @@
 //#include "Z80Tables.h" //Compactacion proyecto
 #include <stdio.h>
 #include "gbGlobals.h"
-#include "OSD.h"
+#include "osd.h"
 #include "galaksija.h" //Para bitluni_dump_vga()
 #include <Arduino.h> //millis
 //#include "extarduino.h"
