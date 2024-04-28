@@ -8,15 +8,15 @@
  #ifdef gb_use_lib_compile_arduinodroid  
   #include "galFastMode.h"
   #include "galP.h"
-  #include "galPomeri.h"
-  #include "galPrint.h"
+  #include "galpomeri.h"
+  #include "galprint.h"
   #include "galProba.h"
   #include "galSat.h" 
  #else  
   #include "gal/galFastMode.h"
   #include "gal/galP.h"
-  #include "gal/galPomeri.h"
-  #include "gal/galPrint.h"
+  #include "gal/galpomeri.h"
+  #include "gal/galprint.h"
   #include "gal/galProba.h"
   #include "gal/galSat.h"
  #endif
