@@ -1,4 +1,4 @@
-#Tiny Galaksija emulator ESP32 (TTGO VGA32 v1.x)
+# Tiny Galaksija emulator ESP32 (TTGO VGA32 v1.x)
 
 <br><br>
 <h1>Documentation (Help)</h1>
