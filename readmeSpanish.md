@@ -13,7 +13,8 @@ He realizado varias modificaciones:
  <li>VGA 360x200, 320x200 y 320x240</li>
 </ul>
 
-<br>
+
+<br><br>
 <h1>Requerimientos</h1>
 Se requiere:
  <ul>
@@ -22,6 +23,7 @@ Se requiere:
   <li>Arduino IDE 1.8.11 Espressif System 1.0.6</li>
   <li>ArduinoDroid (6.3.1)</li>  
  </ul>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/ttgovga32v12.jpg'></center>  
 
 
 <br><br>
@@ -30,3 +32,30 @@ Se debe ejecutar, sólo una vez, el script makearduinodroidwin.bat, que nos deja
 Básicamente, nos quedan todos los archivos en un único nivel, sin subdirectorios posibles.
 El directorio 'notdelete' es interno del script y se utiliza para copiar el gbCompileOpt.h.<br>
 Al finalizar, el propio script, podemos abrir el galaksija.ino.
+
+
+<br><br>
+<h1>Arduino Web Editor</h1>
+Se debe ejecutar, sólo una vez, el script makearduinodroidwin.bat. Una vez finalizado, se sube a la nube como un proyecto cualquiera, ya sea comprimido en zip o por archivos.
+
+
+<br><br>
+<h1>PlatformIO</h1>
+Se debe instalar el PLATFORMIO 2.2.1 desde las extensiones del Visual Studio. Se requiere también Espressif32 v3.3.2.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewPlatformIOinstall.gif'></center>
+Luego se seleccionará el directorio de trabajo <b>TinyGalaksijattgovga32</b>.
+Debemos modificar el fichero <b>platformio.ini</b> la opción <b>upload_port</b> para seleccionar el puerto COM donde tenemos nuestra placa TTGO VGA32.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewPlatformIO.gif'></center>
+Luego procederemos a compilar y subir a la placa. No se usa particiones, así que debemos subir todo el binario compilado.
+Está todo preparado para no tener que instalar las librerias de bitluni ni fabgl.
+
+
+<br><br>
+<h1>Arduino IDE</h1>
+Todo el proyecto es compatible con la estructura de Arduino 1.8.11.
+Tan sólo tenemos que abrir el <b>galaksija.ino</b> del directorio <b>galaksija</b>.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewArduinoIDEpreferences.gif'></center>
+Debemos instalar las extensiones de spressif en el gestor de urls adicionales de tarjetas <b>https://dl.espressif.com/dl/package_esp32_index.json</b>
+<br>
+Ya está preparado el proyecto, de forma que no se necesita ninguna librería de bitluni ni fabgl.
+Debemos desactivar la opción de PSRAM, y en caso de superar 1 MB de binario, seleccionar 4 MB de partición a la hora de subir. Aunque el código no use PSRAM, si la opción está activa y nuestro ESP32 no dispone de ella, se generará una excepción y reinicio del mismo en modo bucle.
