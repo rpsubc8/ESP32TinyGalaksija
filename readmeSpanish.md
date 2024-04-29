@@ -11,6 +11,13 @@ He realizado varias modificaciones:
  <li>Proyecto compatible con Web Editor y ArduinoDroid (6.3.1) con tool makearduinodroidwin.bat</li>
  <li>Soporte para modo 8 y 64 colores (versión reducida de Ricardo Massaro).</li>
  <li>VGA 360x200, 320x200 y 320x240</li>
+ <li>Selección de modo de video de inicio en compilación.</li>
+ <li>Selección de modo de video en el arranque (500 ms) pulsando una tecla.</li>
+ <li>Cambio del modo de video en caliente, en cualquier momento y sin necesidad de reiniciar.</li>
+ <li>Reducción de emulación de 64KB de RAM a sólo 8 KB.</li>
+ <li>Estadísticas de CPU y Video en OSD.</li>
+ <li>Estadísticas de RAM libre desde OSD.</li> 
+ <li>Teclado remoto UART.</li>
 </ul>
 
 
