@@ -1,6 +1,7 @@
 # Tiny Galaksija ESP32
 Port del emulador Galaksija a la placa TTGO VGA32 v1.x (1.0, 1.1, 1.2, 1.4) con ESP32.<br>
 Basado en el emulador x86 de Miodrag Jevremovic, Tomaž Šolc y Peter Bakota.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewVideoModes.gif'></center>
 He realizado varias modificaciones:
 <ul>
  <li>Portado de x86 PC a ESP32</li>
@@ -31,8 +32,9 @@ Existen 16 posibles modos de video, que en realidad se dividen en 3 básicos, pe
 </ul>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewVideoModes.gif'></center>  
 Dado que el Galaksija tenía una resolución de 256x208, lo ideal es usar 320x240.
-Los modos de video se pueden seleccionar al arranque de la placa durante 500 ms, o el tiempo especificado en el gbConfig.h en la seccion use_lib_boot_time_select_vga, con sólo pulsar la tecla del mismo, desde el 0 al F.
-El modo de video también se puede fijar en la compilación, pero lo más cómodo es cambiarlo en caliente desde el OSD en cualquier instante.
+Los modos de video se pueden seleccionar al arranque de la placa durante 500 ms, o el tiempo especificado en el gbConfig.h en la seccion use_lib_boot_time_select_vga, con sólo pulsar la tecla del mismo, desde el 0 al F.<br>
+El modo de video también se puede fijar en la compilación, pero lo más cómodo es cambiarlo en caliente desde el OSD en cualquier instante.<br>
+Adí mismo, existen para cada modo de video, la posibi
 
 
 
