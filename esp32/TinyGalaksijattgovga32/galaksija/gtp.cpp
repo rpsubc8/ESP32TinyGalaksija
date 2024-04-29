@@ -23,8 +23,8 @@ typedef struct
     // crc.w at the end
 } GTP_datablock;
 
-int load_gtp_file(const char *gtp_file, void *memory, int block)
-{
+//int load_gtp_file(const char *gtp_file, void *memory, int block)
+//{
 /*    
  printf("load_gtp_file BEGIN\n");
  fflush(stdout);
@@ -147,8 +147,8 @@ int load_gtp_file(const char *gtp_file, void *memory, int block)
  printf("load_gtp_file END\n");    
  fflush(stdout);
  */
-    return 0;
-}
+//    return 0;
+//}
 
 
 //******************************************************************************
@@ -286,8 +286,8 @@ void LoadGTPFlash(const unsigned char *ptrData, unsigned short int ptrSize)
 
 //******************************************************************************
 //JJ int save_gtp_file(const char *gtp_file, void *memory, word start, word end)
-int save_gtp_file(const char *gtp_file, void *memory, unsigned short int start, unsigned short int end)
-{
+//int save_gtp_file(const char *gtp_file, void *memory, unsigned short int start, unsigned short int end)
+//{
 /*revisar    
     FILE *file= fopen(gtp_file,"wb"); //SDL_RWops *file = SDL_RWFromFile(gtp_file, "wb"); //SDL2 a SDL1
 
@@ -334,5 +334,5 @@ int save_gtp_file(const char *gtp_file, void *memory, unsigned short int start, 
 
     fclose(file); //SDL_RWclose(file); //SDL2 a SDL1
 */    
-    return 0;
-}
+//    return 0;
+//}

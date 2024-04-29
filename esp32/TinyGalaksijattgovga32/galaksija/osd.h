@@ -243,12 +243,12 @@ static const char * gb_about_menu_en[max_gb_about_menu]={
  "",
  "Port of the galaksija emulator by",
  "ackerman, based on x86 pbakota's Miodrag",
- "Jevremovic, Tomaz Solc and Marat Fayzullin.",
+ "Jevremovic,Tomaz Solc and Marat Fayzullin.",
  "",
  "ESP32 TTGO VGA32 v1.x without  PSRAM",
  "VGA bitluni (mod Ricardo Massaro)",
  "VGA 3 bpp and 6 bpp",
- "Switching video mode on start-up or hot-switching",
+ "Switch video mode on startup or hot run",
  "PS/2 keyboard"
 };
 

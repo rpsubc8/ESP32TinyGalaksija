@@ -10,7 +10,7 @@
 
 // I/O
 
-#define MAX_INPUT_SIZE 256
+//#define MAX_INPUT_SIZE 256
 
 //void jj_fast_putpixel(int x,int y,unsigned char c)
 //{

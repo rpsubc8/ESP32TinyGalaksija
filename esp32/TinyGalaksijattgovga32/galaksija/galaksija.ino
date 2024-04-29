@@ -252,7 +252,7 @@ unsigned int last_time = 0;
 //float sekunda = 0;
 //float render_time = 0; //No lo necesito
 //unsigned char active_help = 0;
-char *prg_to_load = NULL;
+//char *prg_to_load = NULL;
 unsigned short int prg_to_jump = 0;
 int cpu_speed = CPU_SPEED_NORMAL;
 
@@ -992,15 +992,15 @@ void refresh_screen()
 
 
 //*****************************************************************
-void load_prg(char *prg)
-{
- if (gb_use_debug==1){ Serial.printf("load_prg: %s\r\n",prg); }
- //fflush(stdout);
-    if (load_gtp_file(prg, MEMORY, 0) == 0)
-    {
-        R.PC.W = prg_to_jump ? prg_to_jump : 0x0317; // 0x0317 = BASIC WARM START
-    }
-}
+//void load_prg(char *prg)
+//{
+// if (gb_use_debug==1){ Serial.printf("load_prg: %s\r\n",prg); }
+// //fflush(stdout);
+//    if (load_gtp_file(prg, MEMORY, 0) == 0)
+//    {
+//        R.PC.W = prg_to_jump ? prg_to_jump : 0x0317; // 0x0317 = BASIC WARM START
+//    }
+//}
 
 //*************************************************************
 void LoadGALFlash(const unsigned char *ptrData)
@@ -1008,6 +1008,8 @@ void LoadGALFlash(const unsigned char *ptrData)
  if (gb_use_debug==1){ Serial.printf("OSDLoadGALFlash BEGIN\r\n"); }
  //fflush(stdout);
  
+ memset((void *)MEMORY, 0, sizeof(MEMORY));
+
  unsigned char *ptrDOS_R= (unsigned char *)&DOS_R;
  memcpy(ptrDOS_R, ptrData, sizeof(Z80_RegsDOS));
 
@@ -1240,9 +1242,10 @@ unsigned short int LoopZ80(Z80 *R)
           send_virtual_keys();
          }
          
+         
 
-        if (!Fassst)        
-        {         
+        if (!Fassst)                    
+        {
          gb_vga_poll_time_cur = millis();
          if (
              (!((gb_vga_poll_time_cur - gb_vga_poll_time_prev) < gb_use_vga_poll_ms))
@@ -1413,22 +1416,22 @@ unsigned short int LoopZ80(Z80 *R)
     //JJ SDL_RenderPresent(renderer); //SDL2 a SDL1
     //JJ SDL_DestroyTexture(tex); //SDL2 a SDL1
 
-    if (prg_to_load)
-    {
-        //fprintf(gb_log,"prg_to_load W:%04X BEGIN\n",R->PC.W);
-        // XXX: Is the machine in idle loop?
-        if (R->PC.W == 0x0ceb)
-        {
-            //printf("Loading prg \"%s\" ...\n", prg_to_load);
-            //printf("Loading prg\n");
-            if (gb_use_debug==1){ Serial.printf("Loading prg \"%s\" ...\r\n", prg_to_load); }
-            //fflush(stdout);
-            load_prg(prg_to_load);
-
-            prg_to_load = NULL;
-        }
-        //fprintf(gb_log,"prg_to_load END\n");
-    }
+//    if (prg_to_load)
+//    {
+//        //fprintf(gb_log,"prg_to_load W:%04X BEGIN\n",R->PC.W);
+//        // XXX: Is the machine in idle loop?
+//        if (R->PC.W == 0x0ceb)
+//        {
+//            //printf("Loading prg \"%s\" ...\n", prg_to_load);
+//            //printf("Loading prg\n");
+//            if (gb_use_debug==1){ Serial.printf("Loading prg \"%s\" ...\r\n", prg_to_load); }
+//            //fflush(stdout);
+//            load_prg(prg_to_load);
+//
+//            prg_to_load = NULL;
+//        }
+//        //fprintf(gb_log,"prg_to_load END\n");
+//    }
 
     if (ExitLoop)
     {
