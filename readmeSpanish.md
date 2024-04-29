@@ -22,6 +22,22 @@ He realizado varias modificaciones:
 
 
 <br><br>
+<h1>Modos de video</h1>
+Existen 16 posibles modos de video, que en realidad se dividen en 3 básicos, pero con posibilidad ambos de 3 bpp (8 colores) o 6 bpp (64 colores):
+<ul>
+ <li>360x200</li>
+ <li>320x200</li>
+ <li>320x240</li>
+</ul>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewVideoModes.gif'></center>  
+Dado que el Galaksija tenía una resolución de 256x208, lo ideal es usar 320x240.
+Los modos de video se pueden seleccionar al arranque de la placa durante 500 ms, o el tiempo especificado en el gbConfig.h en la seccion use_lib_boot_time_select_vga, con sólo pulsar la tecla del mismo, desde el 0 al F.
+El modo de video también se puede fijar en la compilación, pero lo más cómodo es cambiarlo en caliente desde el OSD en cualquier instante.
+
+
+
+
+<br><br>
 <h1>Requerimientos</h1>
 Se requiere:
  <ul>
@@ -30,7 +46,7 @@ Se requiere:
   <li>Arduino IDE 1.8.11 Espressif System 1.0.6</li>
   <li>ArduinoDroid (6.3.1)</li>  
  </ul>
-<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/ttgovga32v12.jpg'></center>  
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/ttgovga32v12.jpg'></center>
 
 
 <br><br>
