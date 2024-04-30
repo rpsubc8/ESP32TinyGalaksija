@@ -39,6 +39,19 @@ Los modos de video se pueden seleccionar durante el arranque (500 ms) o reinicio
 El modo de video también se puede fijar en la compilación, pero lo más cómodo es cambiarlo en caliente desde el OSD en cualquier instante.<br>
 Así mismo, existen para cada modo de video, la posibilidad de poder usar la función del ajuste del pll de Espressif, o bien una custom, que evita que se quede colgado el ESP32.<br>
 También se permiten diferentes ajustes de video, con modos de fabgl o bitluni.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewManic.gif'></center>
+Existe una opción de filtros CRT, al estilo clásico:
+<ul>
+ <li>Blanco y negro</li>
+ <li>Fósforo verde</li>
+ <li>Naranja</li>
+</ul>
+El color variará en función de que tengamos el modo de video:
+<ul>
+ <li>3 bpp (8 colores)</li>
+ <li>6 bpp (64 colores)</li>
+</ul>
+Se recomienda el modo de 64 colores, y nos daremos cuenta por el efecto de nieve en TV en tonalidad azul (3 bpp) o escala de grises (6 bpp).
 
 
 
