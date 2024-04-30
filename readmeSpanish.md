@@ -88,3 +88,67 @@ Debemos instalar las extensiones de spressif en el gestor de urls adicionales de
 <br>
 Ya está preparado el proyecto, de forma que no se necesita ninguna librería de bitluni ni fabgl.
 Debemos desactivar la opción de PSRAM, y en caso de superar 1 MB de binario, seleccionar 4 MB de partición a la hora de subir. Aunque el código no use PSRAM, si la opción está activa y nuestro ESP32 no dispone de ella, se generará una excepción y reinicio del mismo en modo bucle.
+
+
+<br><br>
+<h1>Usabilidad</h1>
+Se permiten las siguientes acciones desde el menú (tecla F1):
+ <ul>
+  <li>Cargar o seleccionar una cinta (GTP)</li>
+  <li>Cargar o seleccionar un snapshot (GAL)</li>
+  <li>Selecionar idioma Español o inglés</li>
+  <li>Seleccionar 16 modos de video</li>
+  <li>Cambiar el color verde, naranja o blanco y negro, como los monitores retro</li>  
+  <li>Mostrar estadísticas de CPU y video</li>  
+  <li>Activar la salida de depuración por usb (serie)</li>
+  <li>Ayuda</li>
+  <li>Resetear el ESP32 o el emulador</li>
+  <li>Interceptar la rutina de cinta cuando escribimos el comando OLD desde BASIC, y hemos seleccionado un GTP, en lugar de cargarlo y ejecutarlo.</li>  
+  <li>Cambiar los milisegundos de polling para video, teclado</li>
+  <li>Ver la RAM libre</li>
+ </ul>
+ Se dispone de un OSD básico de bajos recursos, es decir, muy simple, que se visualiza pulsando la tecla <b>F1</b>.
+ <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewOSD.gif'></center>
+ Algunos menús y submenús son de ejecución inmediata, es decir, al aceptar con la tecla ENTER, ya se cierra el OSD y se aplica la acción. Otros menús, por el contrario, vuelven al menu anterior.<br>
+ Siempre se puede salir del OSD con la tecla ESC.<br>
+ Los cursores Arriba y Abajo permiten navegar por cada acción. Si se mantienen durante un par de milisegundos pulsadas, permiten acción rápida.
+
+
+
+<br><br>
+<h1>Opciones</h1>
+El archivo <b>gbConfig.h</b> se seleccionan las opciones:
+<ul> 
+ <li><b>use_lib_vga8colors:</b> Obliga a usar RGB modo de 8 colores (3 pines). Saca 8 colores, frente a los 64 del modo normal (6 pines RRGGBB).</li>
+ <li><b>use_lib_log_serial:</b> Se envian logs por puerto serie usb</li>
+ <li><b>use_lib_fix_double_precision:</b> No usar FPU para el cálculo del PLL.</li>
+ <li><b>use_lib_debug_i2s:</b> Información detallada de la inicialización del modo de video.</li>
+</ul>
+
+
+
+<br><br>
+<h1>Tool data2h</h1>
+He creado una herramienta muy básica (win32), para convertir los archivos .GTP y .GAL en .h en modo lista para ser procesados por el emulador. Tan sólo tenemos que dejar los archivos .GAL y .GTP en la carpeta <b>input/GAL</b> e <b>input/GTP</b> ejecutar el archivo <b>data2h.exe</b>, de forma que se generará una salida en el directorio <b>output/dataFlash</b>.
+<a href='https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/tools'>Tool data2h</a>
+<br><br>
+<pre>
+ input/
+  gal/
+  gtp/
+ output/
+  dataFlash/
+   gal/
+   gtp/ 
+</pre>
+Posteriormente debemos copiar el directorio <b>dataFlash</b> en el proyecto <b>TinyGalaksijattgovga32\galaksija</b> sobreescribiendo la carpeta dataFlash previa. Se recomienda limpiar el proyecto y volver a compilar.<br>
+Esta herramienta es muy simple, y no controla los errores, por lo que se recomienda dejarle los archivos con nombres muy simples y lo más sencillo posible.<br>
+El proyecto en PLATFORM.IO está preparado para 1 MB de Flash. Si necesitamos los 4MB de flash, tendremos que modificar la entrada del archivo <b>platformio.ini</b>
+<pre>board_build.partitions = huge_app.csv</pre>
+En el Arduino IDE, debemos elegir la opción <b>Partition Scheme (Huge APP)</b>.
+
+
+<br><br>
+<h1>DIY circuito</h1>
+Si no queremos usar una placa TTGO VGA32 v1.x, podemos construirla siguiendo el esquema de <b>fabgl</b>:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyNesMaster/main/preview/fabglcircuit.gif'></center>
