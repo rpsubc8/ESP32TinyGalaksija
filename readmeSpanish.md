@@ -15,7 +15,10 @@ He realizado varias modificaciones:
  <li>Selección de modo de video de inicio en compilación.</li>
  <li>Selección de modo de video en el arranque (500 ms) pulsando una tecla.</li>
  <li>Cambio del modo de video en caliente, en cualquier momento y sin necesidad de reiniciar.</li>
+ <li>Filtro color crt b&w, verde o naranja</li>
  <li>Reducción de emulación de 64KB de RAM a sólo 8 KB.</li>
+ <li>Varias optimizaciones en volcado de video y emulación CPU.</li>
+ <li>Reducción de código de emulación Z80 a sólo 2 archivos (Z80Z80.h y Z80Z80.cpp).</li>
  <li>Estadísticas de CPU y Video en OSD.</li>
  <li>Estadísticas de RAM libre desde OSD.</li> 
  <li>Teclado remoto UART.</li>
@@ -32,9 +35,10 @@ Existen 16 posibles modos de video, que en realidad se dividen en 3 básicos, pe
 </ul>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewVideoModes.gif'></center>  
 Dado que el Galaksija tenía una resolución de 256x208, lo ideal es usar 320x240.
-Los modos de video se pueden seleccionar al arranque de la placa durante 500 ms, o el tiempo especificado en el gbConfig.h en la seccion use_lib_boot_time_select_vga, con sólo pulsar la tecla del mismo, desde el 0 al F.<br>
+Los modos de video se pueden seleccionar durante el arranque (500 ms) o reinicio, pudiendo especificar otro tiempo en el gbConfig.h en la sección use_lib_boot_time_select_vga, con sólo pulsar la tecla del mismo, desde el 0 al F.<br>
 El modo de video también se puede fijar en la compilación, pero lo más cómodo es cambiarlo en caliente desde el OSD en cualquier instante.<br>
-Adí mismo, existen para cada modo de video, la posibi
+Así mismo, existen para cada modo de video, la posibilidad de poder usar la función del ajuste del pll de Espressif, o bien una custom, que evita que se quede colgado el ESP32.<br>
+También se permiten diferentes ajustes de video, con modos de fabgl o bitluni.
 
 
 
