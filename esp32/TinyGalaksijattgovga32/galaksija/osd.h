@@ -15,15 +15,16 @@
   #define id_menu_video_options 4
    #define id_menu_video_mode 5
    #define id_menu_video_poll 6
-  #define id_menu_keyb_options 7
-  #define id_menu_cpu_options 8
-  #define id_menu_osd 9
-  #define id_menu_debug 10
-  #define id_menu_help 11
-  #define id_menu_reset 12
-  #define id_menu_intercepttape 13
-  #define id_menu_ram 14
-  #define id_menu_about 15
+   #define id_menu_video_filter 7
+  #define id_menu_keyb_options 8
+  #define id_menu_cpu_options 9
+  #define id_menu_osd 10
+  #define id_menu_debug 11
+  #define id_menu_help 12
+  #define id_menu_reset 13
+  #define id_menu_intercepttape 14
+  #define id_menu_ram 15
+  #define id_menu_about 16
   
 
 
@@ -93,14 +94,16 @@ static const char * gb_language_menu_en[max_gb_language_menu]={
 };
 
 
-#define max_gb_video_options_menu 2
+#define max_gb_video_options_menu 3
 static const char * gb_video_options_menu_sp[max_gb_video_options_menu]={
  "Modo de video",
- "Video velocidad sondeo"
+ "Video velocidad sondeo",
+ "Video filtro"
 };
 static const char * gb_video_options_menu_en[max_gb_video_options_menu]={
  "Video mode",
- "Video poll" 
+ "Video poll",
+ "Video filter"
 };
 
 
@@ -139,6 +142,18 @@ static const char * gb_video_poll_menu_en[max_gb_video_poll_menu]={
  "30 ms (33 FPS)",
  "40 ms (25 FPS)",
  "50 ms (20 FPS)"
+};
+
+#define max_gb_video_filter_menu 3
+static const char * gb_video_filter_menu_sp[max_gb_video_filter_menu]={
+ "Blanco y Negro",
+ "Verde",
+ "Naranja"
+};
+static const char * gb_video_filter_menu_en[max_gb_video_filter_menu]={
+ "Black and White",
+ "Green",
+ "Orange"
 };
 
 
@@ -287,6 +302,7 @@ static const char * gb_about_menu_en[max_gb_about_menu]={
  void ShowTinyAboutMenu(void);
  void ShowTinyHelpMenu(void);
  void ShowTinyInterceptTapeMenu(void); 
+ void ShowTinyVideoFilterMenu(void);
  void ShowTinyRAM(void);
  void OSDSubir(unsigned char idSel);
  void OSDBajar(unsigned char idSel);

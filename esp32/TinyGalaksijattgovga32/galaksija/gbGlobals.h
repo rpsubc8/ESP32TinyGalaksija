@@ -18,6 +18,7 @@
  
 
  extern unsigned char gb_cont_error_mem;
+ extern unsigned char gb_use_video_filter;
 
  extern unsigned int gb_ramfree_ini;
  extern unsigned int gb_ramfree_setupEnd;
@@ -91,7 +92,7 @@
  extern unsigned int gb_cpu_time_med; 
  extern unsigned int gb_cpu_time_max;
 
- extern unsigned char gb_keep_alive;
+ //extern unsigned char gb_keep_alive;
  //extern SDL_Event gb_event;
  //extern SDL_Color gb_colors[256];
 

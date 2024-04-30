@@ -1153,6 +1153,7 @@ void ShowTinyVideoOptionsMenu()
  {
   case 0: gb_id_menu_cur= id_menu_video_mode; break;
   case 1: gb_id_menu_cur= id_menu_video_poll; break;
+  case 2: gb_id_menu_cur= id_menu_video_filter; break;  
   default: break;
  } 
 }
@@ -1380,6 +1381,48 @@ void ShowTinyVideoPollMenu()
   default: gb_use_vga_poll_ms= 20; break;
  }          
 
+ gb_show_osd_main_menu=0;
+}
+
+//********************************************************************************************
+void ShowTinyVideoFilterMenu()
+{
+ unsigned char aSelNum;
+ if (gb_language_en==1)
+ {
+  aSelNum = ShowTinyMenu(" VIDEO FILTER", (char **)gb_video_filter_menu_en,gb_use_video_filter,max_gb_video_filter_menu);
+ }
+ else
+ {
+  aSelNum = ShowTinyMenu("VIDEO FILTRO", (char **)gb_video_filter_menu_sp,gb_use_video_filter,max_gb_video_filter_menu);
+ }
+ 
+ if (aSelNum==255)
+ {//Pulsa ESC vuelve a menu anterior Video Options
+  gb_id_menu_cur= id_menu_video_options;
+  return;
+ }
+
+ gb_use_video_filter= aSelNum;
+ PrepareBWfilterVGA();
+
+ //switch (aSelNum)
+ //{
+ // case 0: //blanco y negro
+ //  gb_color_bw[0]= 0;
+ //  gb_color_bw[1]= (gb_vga_8colors==1)?7:63;
+ //  break;
+ // case 1: //verde
+ //  gb_color_bw[0]= 0;
+ //  gb_color_bw[1]= (gb_vga_8colors==1)?2:12; //12 RGB en BGR es 1100 001100
+ //  break;
+ // case 2: //amarillo (3bpp) naranja(6bpp)
+ //  gb_color_bw[0]= 0;
+ //  gb_color_bw[1]= (gb_vga_8colors==1)?3:11; //56  //11 RGB en BGR es 56 1011 111000
+ //  break;
+ //}               
+ 
+ gb_id_menu_cur= id_menu_main;
  gb_show_osd_main_menu=0;
 }
 
@@ -1650,6 +1693,7 @@ void do_tinyOSD()
     case id_menu_video_options: ShowTinyVideoOptionsMenu(); break;
     case id_menu_video_mode: ShowTinyVideoModeMenu(); break;
     case id_menu_video_poll: ShowTinyVideoPollMenu(); break;
+    case id_menu_video_filter: ShowTinyVideoFilterMenu(); break;
     case id_menu_keyb_options: ShowTinyKeyboardPollMenu(); break;
     case id_menu_cpu_options: ShowTinyCPUMenu(); break;
     case id_menu_osd: ShowTinyOSDMenu(); break;

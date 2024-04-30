@@ -32,6 +32,7 @@
  #include "dataFlash/gbgtp.h"
 #endif 
 
+unsigned char gb_use_video_filter=0; //Blanco y negro
 unsigned char gb_cont_error_mem=0;
 
 unsigned int gb_ramfree_ini;
@@ -488,6 +489,31 @@ void bitluni_SDL_FillRect(unsigned char auxC)
 }
 
 //*******************************
+void PrepareBWfilterVGA()
+{
+ gb_color_bw[0]= gb_const_colorNormal[0];
+
+ if (gb_vga_8colors == 1)
+ {
+  switch (gb_use_video_filter)
+  {
+   case 0: gb_color_bw[1]= gb_const_colorNormal[7]; break; //Blanco y Negro
+   case 1: gb_color_bw[1]= gb_const_colorNormal[2]; break; //Verde
+   case 2: gb_color_bw[1]= gb_const_colorNormal[3]; break; //Amarillo naranja
+  }
+ }
+ else
+ {
+  switch (gb_use_video_filter)
+  {
+   case 0: gb_color_bw[1]= gb_const_colorNormal[63]; break; //Blanco y Negro
+   case 1: gb_color_bw[1]= gb_const_colorNormal[12]; break; //Verde
+   case 2: gb_color_bw[1]= gb_const_colorNormal[11]; break; //Amarillo naranja
+  }
+ }
+}
+
+//*******************************
 void PrepareColorsBitluniVGA()
 {  
  //(color & RGBAXMask) | SBits;
@@ -499,8 +525,7 @@ void PrepareColorsBitluniVGA()
    gb_const_colorNormal[i]= (i & 0x07) | gb_sync_bits;
   }
 
-  gb_color_bw[0]= gb_const_colorNormal[0];
-  gb_color_bw[1]= gb_const_colorNormal[7];
+  PrepareBWfilterVGA();
   ESP32_WHITE=7;
   ESP32_BLACK=0;  
  }
@@ -512,8 +537,7 @@ void PrepareColorsBitluniVGA()
    gb_const_colorNormal[i]= (i & 0x3F) | gb_sync_bits;
   }
 
-  gb_color_bw[0]= gb_const_colorNormal[0];
-  gb_color_bw[1]= gb_const_colorNormal[63];
+  PrepareBWfilterVGA();
   ESP32_WHITE=63;
   ESP32_BLACK=0;  
  }
@@ -1009,6 +1033,10 @@ void LoadGALFlash(const unsigned char *ptrData)
  //fflush(stdout);
  
  memset((void *)MEMORY, 0, sizeof(MEMORY));
+ if (gb_use_debug==1){ Serial.printf("Clear full memory END\r\n"); }
+
+ gb_cont_error_mem=0;
+ if (gb_use_debug==1){ Serial.printf("Reset gb_cont_error_mem\r\n"); }
 
  unsigned char *ptrDOS_R= (unsigned char *)&DOS_R;
  memcpy(ptrDOS_R, ptrData, sizeof(Z80_RegsDOS));

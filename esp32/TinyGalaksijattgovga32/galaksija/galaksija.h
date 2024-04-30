@@ -18,5 +18,6 @@
 
  void interceptarROMTape(void);
  void PrepareColorsBitluniVGA(void);
+ void PrepareBWfilterVGA(void);
 
 #endif
