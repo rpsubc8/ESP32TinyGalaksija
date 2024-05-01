@@ -152,6 +152,29 @@ Se permiten las siguientes acciones desde el menú (tecla F1):
 
 
 <br><br>
+<h1>GTP (cintas)</h1>
+Siempre que carguemos un GTP (cinta) desde el OSD, nos permitirá elegir entre:
+<ul>
+ <li><b>Load:</b> Nos permite cargarlo.</li>
+ <li><b>Select:</b> Sólo lo seleccionar, pudiendo desde BASIC leerlo con el comando OLD.</li>
+</ul>
+Cuando se lanza el comando OLD, existe un pequeño truco no 100% correcto, para interceptar la rutina de ROM, y proceder a cargarlo. Dicha intercepción se puede deshabilitar también desde el OSD.<br>
+Si hemos elegido la carga, en lugar de la selección, cuando ya hemos elegido una cinta desde el OSD, nos aparecerá si queremos usar el <b>WARM START BASIC</b>.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewWarmStart.gif'></center>
+Posteriormente, nos dirá si queremos que haga un <b>RUN</b> automático desde BASIC o no.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewRUN.gif'></center>
+En caso de que aceptemos, desde BASIC, se procederá a escribir RUN de manera automática.<br>
+Es recomendable tener una ejecución limpia, siempre que carguemos juegos, es decir, reiniciar el emulador, para dejar todo lo mejor posible.<br>
+Cuando ocurren errores de memoria, se deja traza por el puerto serie, y al cabo de un par de ellos, se autoreinicia el emulador (no el ESP32), dejándonos una traza.
+
+
+<br><br>
+<h1>Snapshot GAL</h1>
+Siempre que carguemos un GAL, nos dejará la opción de ejecutar <b>RUN</b> o no desde BASIC.<br>
+Los GAL deben ser de tamaño 8268 bytes.
+
+
+<br><br>
 <h1>GPIO</h1>
 El archivo <b>hardware.h</b> contiene lo necesario para el GPIO de:
 <ul>
