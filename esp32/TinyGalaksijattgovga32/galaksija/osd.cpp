@@ -1,11 +1,11 @@
 #include "gbConfig.h"
 #include "osd.h"
-#include "gbsdlfont6x8.h"
+//#include "gbsdlfont6x8.h"
 #include <string.h> //para strelen, revisar quitar
 #include "gbGlobals.h"
 #include "galaksija.h"
 //#include <SDL/SDL.h>
-#include "gtp.h"
+//#include "gtp.h"
 #include "gbCompileOpt.h"
 #ifdef gb_use_lib_compile_arduinodroid
  #include "gbgtp.h"

@@ -19,11 +19,9 @@
 #include <Arduino.h>
 #include "galaksija.h"
 
-#include "gtp.h"
-#include "io.h"
-#include "rom1bin.h"
-#include "rom2bin.h"
-#include "font8.h"
+//#include "gtp.h"
+//#include "io.h"
+#include "font8rom1binrom2bin.h"
 #include "gbCompileOpt.h"
 
 #ifdef gb_use_lib_compile_arduinodroid
@@ -31,6 +29,30 @@
 #else
  #include "dataFlash/gbgtp.h"
 #endif 
+
+
+//gtp.cpp BEGIN
+typedef struct
+{
+    //JJ Uint8 type;
+    //JJ Uint32 len;
+ unsigned char type;
+ unsigned int len;
+} GTP_header;
+
+typedef struct
+{
+ unsigned char magic;   //JJ Uint8 magic; // 0xa5
+ unsigned short int start; //JJ  Uint16 start;
+ unsigned short int end;//JJ   Uint16 end;
+ unsigned char data[0]; //JJ   Uint8 data[0];
+    // crc.w at the end
+} GTP_datablock;
+//gtp.cpp END
+
+
+
+
 
 unsigned char gb_use_video_filter=0; //Blanco y negro
 unsigned char gb_cont_error_mem=0;
@@ -1782,6 +1804,69 @@ void ActivarVideoPorTeclas()
 
 
 
+//*********************************************************************************
+void draw_char(unsigned char karakter, unsigned short int pozX, unsigned char pozY)
+{   
+  unsigned char aux;
+  unsigned char a0,a1,a2,a3;
+  unsigned int a32;
+  unsigned short int auxPosByte;
+
+  if (!(karakter < 64))
+  {
+   if (karakter < 96)
+   {
+    karakter= karakter-64;
+   }
+   else
+   {
+    if (!(karakter < 128))
+    {
+     if (karakter < 192)
+     {
+      karakter= (karakter - 128 + 64);
+     }
+     else
+     {
+      karakter= (karakter - 192 + 64);
+     }
+    }    
+   }
+  } 
+
+  auxPosByte= (karakter<<3)+(karakter<<2)+karakter; //karakter*13 = (karakter x 8)+(karakter x 4)+karakter;
+  pozX= (pozX>>2); //DIV 4 32 bits 4 pixels  
+
+  //for (unsigned char n=0;n<13; n++, pozY++)
+  //gb_vga_alto_caracter= 12 o 13
+  for (unsigned char n=0;n<gb_vga_alto_caracter; n++, pozY++) //correccion parpadeo
+  {   
+   aux= FONT8_1bit[auxPosByte];
+   a0= gb_color_bw[(aux>>7)&0x01];
+   a1= gb_color_bw[(aux>>6)&0x01];
+   a2= gb_color_bw[(aux>>5)&0x01];
+   a3= gb_color_bw[(aux>>4)&0x01];
+   //a32= a0 | (a1<<8) | (a2<<16) | (a3<<24); //PC X86
+   a32= a2 | (a3<<8) | (a0<<16) | (a1<<24); //ESP32
+   gb_buffer_vga32[pozY][pozX]= a32;   
+   
+   a0= gb_color_bw[(aux>>3)&0x01];
+   a1= gb_color_bw[(aux>>2)&0x01];
+   a2= gb_color_bw[(aux>>1)&0x01];
+   a3= gb_color_bw[(aux>>0)&0x01];
+   //a32= a0 | (a1<<8) | (a2<<16) | (a3<<24); //PC X86
+   a32= a2 | (a3<<8) | (a0<<16) | (a1<<24); //ESP32
+   gb_buffer_vga32[pozY][pozX+1]= a32;
+   
+   auxPosByte++;
+  }
+}
+
+
+
+
+
+
 
 
 //*********
@@ -1842,6 +1927,139 @@ void setup()
 
  gb_setup_end= 1;
 }
+
+//******************************************************************************
+void LoadGTPFlash(const unsigned char *ptrData, unsigned short int ptrSize)
+{
+ unsigned int a0,a1,a2,a3, aDword, adword;
+ unsigned short int aword;
+     
+ unsigned short int fcont=0;
+ if (gb_use_debug==1){ Serial.printf("LoadGTPFlash BEGIN\r\n"); }
+ 
+ unsigned short int bcnt = 0;
+ unsigned short int total_fsize = ptrSize; //revisar Sint64 total_fsize = ptrSize;
+
+ if (gb_use_debug==1){ Serial.printf("Load size=%d\r\n", total_fsize); }
+ //fflush(stdout); 
+ 
+ 
+    while (fcont < total_fsize) //SDL2 a SDL1
+    {
+        GTP_header hdr;
+        hdr.type= ptrData[fcont++];
+                
+        a0= ptrData[fcont++]&0xFF;
+        a1= ptrData[fcont++]&0xFF;
+        a2= ptrData[fcont++]&0xFF;
+        a3= ptrData[fcont++]&0xFF;
+        adword= (a3<<24)|(a2<<16)|(a1<<8)|a0;
+        
+        hdr.len= adword;        
+
+        unsigned short int block_start_offset = fcont; //revisar Sint64 block_start_offset = fcont;
+
+        //fprintf(stderr, "%d. Block type: 0x%02x, OFFSET=0x%08lx LEN=0x%04x\n", (int)bcnt, (int)hdr.type, block_start_offset, (int)hdr.len);
+        if (gb_use_debug==1){ Serial.printf("%d. Block type: 0x%02x, OFFSET=0x%08lx LEN=0x%04x\r\n", (int)bcnt, (int)hdr.type, block_start_offset, (int)hdr.len); }
+        //fflush(stdout);
+        if (block_start_offset == 0)
+        {
+            //fprintf(stderr, "Could not read file!\n");
+            if (gb_use_debug==1){ Serial.printf("Could not read file!\r\n"); }
+            //fflush(stdout);
+            break;
+        }
+
+        switch (hdr.type)
+        {
+        case 0: // Normal block
+        case 1: // Turbo block
+        {
+            GTP_datablock blk;
+            blk.magic= ptrData[fcont++];
+            
+            a0= ptrData[fcont++]&0xFF;
+            a1= ptrData[fcont++]&0xFF;
+            aword= (a1<<8)|a0;
+            blk.start= aword;
+
+            a0= ptrData[fcont++]&0xFF;
+            a1= ptrData[fcont++]&0xFF;
+            aword= (a1<<8)|a0;
+            
+            blk.end= aword;
+
+            if (blk.magic != 0xa5)
+            {
+                //fprintf(stderr, "   ERROR: Sync 0xa5 was not found!\n");
+                if (gb_use_debug==1){ Serial.printf("ERROR: Sync 0xa5 was not found!\r\n"); }
+                //fflush(stdout);
+                break;
+            }
+
+            #ifdef use_lib_ram_8KB
+             memcpy((unsigned char *)MEMORY + blk.start - 8192, &ptrData[fcont], (blk.end - blk.start));
+             fcont+= (blk.end - blk.start);
+            #else
+             memcpy((unsigned char *)MEMORY + blk.start, &ptrData[fcont], (blk.end - blk.start));
+             fcont+= (blk.end - blk.start);
+            #endif 
+            unsigned char crc=0;
+            crc= ptrData[fcont++];
+            unsigned char otro=0;
+            otro= ptrData[fcont++]; 
+
+            unsigned char chk = 0xa5 + ((blk.start >> 8) & 0xff) + ((blk.start) & 0xff) + ((blk.end >> 8) & 0xff) + ((blk.end) & 0xff); //JJ byte chk = 0xa5 + ((blk.start >> 8) & 0xff) + ((blk.start) & 0xff) + ((blk.end >> 8) & 0xff) + ((blk.end) & 0xff);
+            for (int i = blk.start; i < blk.end; ++i)
+            {
+             #ifdef use_lib_ram_8KB
+              chk += *((unsigned char *)MEMORY + i-8192); //JJ chk += *((byte *)memory + i);
+             #else
+              chk += *((unsigned char *)MEMORY + i); //JJ chk += *((byte *)memory + i);
+             #endif 
+            }
+
+            //fprintf(stderr, "   START=0x%04x END=0x%04x CRC=0x%02x POS=0x%08lx\n",(int)blk.start, (int)blk.end, (int)crc, ftell(file)); //fprintf(stderr, "   START=0x%04x END=0x%04x CRC=0x%02x POS=0x%08lx\n",(int)blk.start, (int)blk.end, (int)crc, SDL_RWtell(file)); //SDL2 a SDL1
+            if (gb_use_debug==1){ Serial.printf("START=0x%04x END=0x%04x CRC=0x%02x POS=0x%08lx\r\n",(int)blk.start, (int)blk.end, (int)crc, fcont); } //fprintf(gb_log,"   START=0x%04x END=0x%04x CRC=0x%02x POS=0x%08lx\n",(int)blk.start, (int)blk.end, (int)crc, SDL_RWtell(file)); //SDL2 a SDL1
+            //fflush(stdout);
+
+            if (((chk + crc) & 0xff) != 0xff)
+            {
+                //fprintf(stderr, "   LOAD ERROR: 0x%02x + 0x%02x != 0xff\n", (int)crc, (int)chk);
+                if (gb_use_debug==1){ Serial.printf("LOAD ERROR: 0x%02x + 0x%02x != 0xff\r\n", (int)crc, (int)chk); }
+                //fflush(stdout);
+            }
+        }
+        break;
+        case 16: // Name block
+        {
+            char buffer[256];
+            memcpy(buffer, &ptrData[fcont], hdr.len);
+            fcont += hdr.len;
+            //fprintf(stderr, "   FILE=\"%s\" POS=0x%08lx\n", buffer, ftell(file)); //fprintf(stderr, "   FILE=\"%s\" POS=0x%08lx\n", buffer, SDL_RWtell(file)); //SDL2 a SDL1
+            if (gb_use_debug==1){ Serial.printf("FILE=\"%s\" POS=0x%08lx\r\n", buffer, fcont); } //fprintf(gb_log,"   FILE=\"%s\" POS=0x%08lx\n", buffer, SDL_RWtell(file)); //SDL2 a SDL1
+            //fflush(stdout);
+        }
+        break;
+        default:
+            //fprintf(stderr, "WARNING: Unknown block type 0x%02x\n", (int)hdr.type);
+            if (gb_use_debug==1){ Serial.printf("WARNING: Unknown block type 0x%02x\r\n", (int)hdr.type); }
+            //fflush(stdout);
+            break;
+        }
+
+        // Skip to next block
+        fcont= block_start_offset + hdr.len;
+        ++bcnt;
+    } 
+ 
+ 
+ //gb_id_menu_cur= id_menu_main;
+ 
+ if (gb_use_debug==1){ Serial.printf("LoadGTPFlash END\r\n"); }
+ //fflush(stdout);
+}
+
 
 
 

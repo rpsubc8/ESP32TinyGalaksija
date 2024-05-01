@@ -19,5 +19,8 @@
  void interceptarROMTape(void);
  void PrepareColorsBitluniVGA(void);
  void PrepareBWfilterVGA(void);
+ 
+ void draw_char(unsigned char karakter, unsigned short int pozX, unsigned char pozY);
+ void LoadGTPFlash(const unsigned char *ptrData, unsigned short int ptrSize);
 
 #endif
