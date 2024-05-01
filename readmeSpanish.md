@@ -83,7 +83,20 @@ Se requiere:
 Se debe ejecutar, sólo una vez, el script makearduinodroidwin.bat, que nos deja toda la estructura de datos del directorio dataFlash, así como el resto de archivos, en el directorio desde el que se lanza el script.<br>
 Básicamente, nos quedan todos los archivos en un único nivel, sin subdirectorios posibles.
 El directorio 'notdelete' es interno del script y se utiliza para copiar el gbCompileOpt.h.<br>
-Al finalizar, el propio script, podemos abrir el galaksija.ino.
+Al finalizar, el propio script, podemos abrir el <b>galaksija.ino</b>, y recompilar.<br>
+Este script busca los archivos subiendo niveles hasta llegar al <b>TinyGalaksijattgovga32/galaksija</b>, así que se requiere que baje el proyecto completo con toda la estructura:
+<pre>
+ TinyGalaksijattgovga32
+  galaksija
+   dataFlash
+  include
+  lib
+  test
+ tools
+  arduinodroid
+   galaksija
+  data2h
+</pre>
 
 
 <br><br>
