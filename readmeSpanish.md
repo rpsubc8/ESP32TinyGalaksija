@@ -156,7 +156,7 @@ Se permiten las siguientes acciones desde el menú (tecla F1):
 Siempre que carguemos un GTP (cinta) desde el OSD, nos permitirá elegir entre:
 <ul>
  <li><b>Load:</b> Nos permite cargarlo.</li>
- <li><b>Select:</b> Sólo lo seleccionar, pudiendo desde BASIC leerlo con el comando OLD.</li>
+ <li><b>Select:</b> Sólo lo selecciona, pudiendo desde BASIC leerlo con el comando OLD.</li>
 </ul>
 Cuando se lanza el comando OLD, existe un pequeño truco no 100% correcto, para interceptar la rutina de ROM, y proceder a cargarlo. Dicha intercepción se puede deshabilitar también desde el OSD.<br>
 Si hemos elegido la carga, en lugar de la selección, cuando ya hemos elegido una cinta desde el OSD, nos aparecerá si queremos usar el <b>WARM START BASIC</b>.<br>
