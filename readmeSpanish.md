@@ -57,7 +57,7 @@ Se recomienda el modo de 64 colores, y nos daremos cuenta por el efecto de nieve
 <br><br>
 <h1>Versión precompilada</h1>
 En la carpeta precompile se encuentra una versión ya compilada (VGA 360x200) para poder ser grabada con el flash download tool 3.9.2. con los juegos de demostración en FLASH.<br><br>
-<a href='https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/ESP32/precompile'>https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/ESP32/precompile</a>
+<a href='https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/esp32/precompile'>https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/esp32/precompile</a>
 <br><br>
 Debemos de elegir el tipo ESP32:
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/flash00.gif'></center>
@@ -137,6 +137,15 @@ Se permiten las siguientes acciones desde el menú (tecla F1):
  Los cursores Arriba y Abajo permiten navegar por cada acción. Si se mantienen durante un par de milisegundos pulsadas, permiten acción rápida.
 
 
+<br><br>
+<h1>GPIO</h1>
+El archivo <b>hardware.h</b> contiene lo necesario para el GPIO de:
+<ul>
+ <li><b>teclado:</b> KEYBOARD_DATA y KEYBOARD_CLK</li>
+ <li><b>VGA:</b> HSYNC_PIN, VSYNC_PIN, así como los 3 GPIO's de 3bpp o los 6</li>
+</ul>
+Está pensado para la placa TTGO VGA v1.2, así que si tenemos otro tipo de placa, aquí es donde debemos definir los cambios.
+
 
 <br><br>
 <h1>Opciones</h1>
@@ -175,3 +184,15 @@ En el Arduino IDE, debemos elegir la opción <b>Partition Scheme (Huge APP)</b>.
 <h1>DIY circuito</h1>
 Si no queremos usar una placa TTGO VGA32 v1.x, podemos construirla siguiendo el esquema de <b>fabgl</b>:
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyNesMaster/main/preview/fabglcircuit.gif'></center>
+
+
+<br><br>
+<h1>Versión minimalista</h1>
+Se puede realizar una versión minimalista, sin resistencias, condensadores, y demás, sólo con conectores y cables directos, al menos para el caso de 8 colores y un sólo teclado:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyNesMaster/main/preview/minimalfabglcircuit.gif'></center>
+Sólo sirve para teclados PS/2 que pueden alimentarse a 3.3v, que aunque son unos cuantos, suele excluir sobre todo a los muy antigüos, así como a los modernos con lucecitas.
+La salida de audio (no se requiere en el emulador), está pensada para auriculares, y será bastante bajo. Asegurarse de que si le conectamos un amplificador de audio de dudoso estado o algo similar, al no llevar resistencias, podemos llevar un susto.<br>
+La salida de video VGA es para 8 colores (3 pins). Lo mismo, si le conectamos un monitor de dudoso estado, aunque el VGA es para salida, podriamos llevar un susto.<br><br>
+<b>Aunque es muy simple, se requiere unos conocimientos mínimos de electrónica, por lo que si no se sabe lo que se está haciendo, mejor no hacer nada. Me desentiendo de lo que pueda ocurrir.</b><br>
+
+
