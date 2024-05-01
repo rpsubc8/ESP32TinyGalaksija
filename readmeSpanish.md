@@ -54,6 +54,16 @@ El color variará en función de que tengamos el modo de video:
 Se recomienda el modo de 64 colores, y nos daremos cuenta por el efecto de nieve en TV en tonalidad azul (3 bpp) o escala de grises (6 bpp).
 
 
+<br><br>
+<h1>Versión precompilada</h1>
+En la carpeta precompile se encuentra una versión ya compilada (VGA 360x200) para poder ser grabada con el flash download tool 3.9.2. con los juegos de demostración en FLASH.<br><br>
+<a href='https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/ESP32/precompile'>https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/ESP32/precompile</a>
+<br><br>
+Debemos de elegir el tipo ESP32:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/flash00.gif'></center>
+Posteriormente, seleccionaremos los archivos tal y como la captura adjunta, con los mismos valores de offset:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/flash01.gif'></center>
+Y le daremos a start. Si todo ha sido correcto, sólo tendremos que reiniciar el ESP32.
 
 
 <br><br>
@@ -143,7 +153,7 @@ El archivo <b>gbConfig.h</b> se seleccionan las opciones:
 <br><br>
 <h1>Tool data2h</h1>
 He creado una herramienta muy básica (win32), para convertir los archivos .GTP y .GAL en .h en modo lista para ser procesados por el emulador. Tan sólo tenemos que dejar los archivos .GAL y .GTP en la carpeta <b>input/GAL</b> e <b>input/GTP</b> ejecutar el archivo <b>data2h.exe</b>, de forma que se generará una salida en el directorio <b>output/dataFlash</b>.
-<a href='https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/tools'>Tool data2h</a>
+<a href='https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/esp32/tools/data2h'>Tool data2h</a>
 <br><br>
 <pre>
  input/
