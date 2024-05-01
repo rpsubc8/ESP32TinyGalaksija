@@ -150,11 +150,37 @@ Está pensado para la placa TTGO VGA v1.2, así que si tenemos otro tipo de plac
 <br><br>
 <h1>Opciones</h1>
 El archivo <b>gbConfig.h</b> se seleccionan las opciones:
+Podemos elegir el tiempo (milisegundos) para poder seleccionar el modo de video durante el arranque:
+<ul>
+ <li><b>use_lib_boot_time_select_vga:</b> Cuanto más alto sea el valor, más tiempo tardará en arrancar. Si durante este tiempo, pulsamos las teclas del 0 al 9 o las letras de la A a la F, estaremos eligiendo un modo de video. Es válido también para el reinicio.</li>
+</ul>
+Tenemos la posibilidad de elegir uno de los 16 posibles modos de video por defecto, es decir, por compilación, y que sea el que se inicia por defecto al arrancar la placa (360x200):
+<ul>
+ <li><b>use_lib_boot_vga_360x200x70hz_bitluni_3bpp:</b> 360x200 8 colores</li>
+ <li><b>use_lib_boot_vga_360x200x70hz_bitluni_apll_3bpp:</b> 360x200 8 colores corección apll, para ESP32 que se quedan colgados.</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_bitluni_3bpp:</b> 320x200 8 colores</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_fabgl_3bpp:</b> 320x200 8 colores con parámetros de fabgl</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_bitluni_apll_3bpp:</b> 320x200 8 colores corección apll, para ESP32 que se quedan colgados.</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_bitluni_3bpp:</b> 320x240 8 colores</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_fabgl_3bpp:</b> 320x240 8 colores con parámetros de fabgl</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_bitluni_apll_3bpp:</b> 320x240 8 colores corección apll, para ESP32 que se quedan colgados.</li>
+ <li><b>use_lib_boot_vga_360x200x70hz_bitluni_6bpp:</b> 360x200 64 colores</li>
+ <li><b>use_lib_boot_vga_360x200x70hz_bitluni_apll_6bpp:</b> 360x200 64 colores corección apll, para ESP32 que se quedan colgados.</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_bitluni_6bpp:</b> 320x200 64 colores</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_fabgl_6bpp:</b> 320x200 64 colores con parámetros de fabgl</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_bitluni_apll_6bpp:</b> 320x200 64 colores corección apll, para ESP32 que se quedan colgados.</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_bitluni_6bpp:</b> 320x240 64 colores</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_fabgl_6bpp:</b> 320x240 64 colores con parámetros de fabgl</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_bitluni_apll_6bpp:</b> 320x240 64 colores corección apll, para ESP32 que se quedan colgados.</li>
+</ul>
+Como es de esperar, no se puede seleccionar todos los modos al mismo tiempo, así que se debe descomentar el que queremos, y comentar el resto.<br>
+Existen más opciones.
 <ul> 
- <li><b>use_lib_vga8colors:</b> Obliga a usar RGB modo de 8 colores (3 pines). Saca 8 colores, frente a los 64 del modo normal (6 pines RRGGBB).</li>
  <li><b>use_lib_log_serial:</b> Se envian logs por puerto serie usb</li>
  <li><b>use_lib_fix_double_precision:</b> No usar FPU para el cálculo del PLL.</li>
  <li><b>use_lib_debug_i2s:</b> Información detallada de la inicialización del modo de video.</li>
+ <li><b>use_lib_keyboard_uart:</b> Permite usar un teclado remoto via UART por putty o la consola de VStudio.</li>
+ <li><b>use_lib_log_keyboard_uart:</b> La traza del teclado remoto.</li>
 </ul>
 
 
@@ -183,13 +209,13 @@ En el Arduino IDE, debemos elegir la opción <b>Partition Scheme (Huge APP)</b>.
 <br><br>
 <h1>DIY circuito</h1>
 Si no queremos usar una placa TTGO VGA32 v1.x, podemos construirla siguiendo el esquema de <b>fabgl</b>:
-<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyNesMaster/main/preview/fabglcircuit.gif'></center>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/fabglcircuit.gif'></center>
 
 
 <br><br>
 <h1>Versión minimalista</h1>
 Se puede realizar una versión minimalista, sin resistencias, condensadores, y demás, sólo con conectores y cables directos, al menos para el caso de 8 colores y un sólo teclado:
-<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyNesMaster/main/preview/minimalfabglcircuit.gif'></center>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/minimalfabglcircuit.gif'></center>
 Sólo sirve para teclados PS/2 que pueden alimentarse a 3.3v, que aunque son unos cuantos, suele excluir sobre todo a los muy antigüos, así como a los modernos con lucecitas.
 La salida de audio (no se requiere en el emulador), está pensada para auriculares, y será bastante bajo. Asegurarse de que si le conectamos un amplificador de audio de dudoso estado o algo similar, al no llevar resistencias, podemos llevar un susto.<br>
 La salida de video VGA es para 8 colores (3 pins). Lo mismo, si le conectamos un monitor de dudoso estado, aunque el VGA es para salida, podriamos llevar un susto.<br><br>
