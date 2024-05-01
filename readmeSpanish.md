@@ -97,11 +97,12 @@ Este script busca los archivos subiendo niveles hasta llegar al <b>TinyGalaksija
    galaksija
   data2h
 </pre>
+El ArduinoDroid (6.3.1) con soporte para ESP32 sólo funciona con procesadores de 64 bits.
 
 
 <br><br>
 <h1>Arduino Web Editor</h1>
-Se debe ejecutar, sólo una vez, el script makearduinodroidwin.bat. Una vez finalizado, se sube a la nube como un proyecto cualquiera, ya sea comprimido en zip o por archivos.
+Se debe ejecutar, sólo una vez, el script makearduinodroidwin.bat. Una vez finalizado, se sube a la nube como un proyecto cualquiera, ya sea comprimido en zip o por archivos. Básicamente es lo mismo, dado que se intenta dejar todo en un único nivel de directorio.
 
 
 <br><br>
