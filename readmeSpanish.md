@@ -179,14 +179,14 @@ Los GAL deben ser de tamaño 8268 bytes.
 Hay una opción es <b>OSD Options</b> que nos permite ver lo que se llama el OSD, que son las estadísticas de consumos de CPU y video, por cada segundo.
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewStatsCPU.gif'></center>
 <ul>
- <li><b>C:</b> Microsegundos del ESP32 para el frame actual de 20 milisegundos</li>
- <li><b>M:</b> Microsegundos mínimos del ESP32 para el frame de 20 milisegundos</li>
- <li><b>MX:</b> Microsegundos máxicos del ESP32 para el frame de 20 milisegundos</li>
- <li><b>I:</b> Microsegundos libres del ESP32 para el frame de 20 milisegundos, quitando el consumo de video</li>
- <li><b>FPS:</b> FPS que proceso el emulador</li>
- <li><b>FND:</b> FPS que nos daría si no lo limitaramos a 20 milisegundos por frame</li>
- <li><b>V:</b> FPS que nos daría si no lo limitaramos a 20 milisegundos por frame</li>
- <li><b>F:</b> FPS reales a los que estamos volcando el video</li>
+ <li><b>C:</b> Microsegundos del ESP32 para el frame actual de 20 milisegundos.</li>
+ <li><b>M:</b> Microsegundos mínimos del ESP32 para el frame de 20 milisegundos.</li>
+ <li><b>MX:</b> Microsegundos máxicos del ESP32 para el frame de 20 milisegundos.</li>
+ <li><b>I:</b> Microsegundos libres del ESP32 para el frame de 20 milisegundos, quitando el consumo de video.</li>
+ <li><b>FPS:</b> FPS que procesa el emulador.</li>
+ <li><b>FND:</b> FPS que nos daría si no lo limitaramos a 20 milisegundos por frame.</li>
+ <li><b>V:</b> Microsegundos del ESP32 para el volcado de un frame cada 20 milisegundos.</li>
+ <li><b>F:</b> FPS reales a los que estamos volcando el video.</li>
 </ul>
 
 
