@@ -16,7 +16,7 @@ He realizado varias modificaciones:
  <li>Selección de modo de video en el arranque (500 ms) pulsando una tecla.</li>
  <li>Cambio del modo de video en caliente, en cualquier momento y sin necesidad de reiniciar.</li>
  <li>Filtro color crt b&w, verde o naranja</li>
- <li>Reducción de emulación de 64KB de RAM a sólo 8 KB.</li>
+ <li>Reducción de emulación de 64KB de RAM a sólo 8 KB. Sólo se emulan los 6 KB de RAM de Galaksija.</li>
  <li>Varias optimizaciones en volcado de video y emulación CPU.</li>
  <li>Reducción de código de emulación Z80 a sólo 2 archivos (Z80Z80.h y Z80Z80.cpp).</li>
  <li>Estadísticas de CPU y Video en OSD.</li>
@@ -34,10 +34,10 @@ Existen 16 posibles modos de video, que en realidad se dividen en 3 básicos, pe
  <li>320x240</li>
 </ul>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewVideoModes.gif'></center>  
-Dado que el Galaksija tenía una resolución de 256x208, lo ideal es usar 320x240.
-Los modos de video se pueden seleccionar durante el arranque (500 ms) o reinicio, pudiendo especificar otro tiempo en el gbConfig.h en la sección use_lib_boot_time_select_vga, con sólo pulsar la tecla del mismo, desde el 0 al F.<br>
-El modo de video también se puede fijar en la compilación, pero lo más cómodo es cambiarlo en caliente desde el OSD en cualquier instante.<br>
-Así mismo, existen para cada modo de video, la posibilidad de poder usar la función del ajuste del pll de Espressif, o bien una custom, que evita que se quede colgado el ESP32.<br>
+Dado que el Galaksija tenía una resolución de 256x208, lo ideal es usar 320x240.<br>
+Los modos de video se pueden seleccionar durante el arranque (500 ms) o reinicio, pudiendo especificar otro tiempo en el <b>gbConfig.h</b> en la sección <b>use_lib_boot_time_select_vga</b>, con sólo pulsar la tecla del mismo, desde el '0' al 'F'.<br>
+El modo de video de inicio también se puede fijar en la compilación, pero lo más cómodo es cambiarlo en caliente desde el OSD en cualquier instante.<br>
+Así mismo, existen para cada modo de video, la posibilidad de poder usar la función del ajuste del pll de Espressif, o bien una custom, que evita que se quede colgado el ESP32. Dicho modo especial de video tiene el añadido del <b>apll</b>.<br>
 También se permiten diferentes ajustes de video, con modos de fabgl o bitluni.
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewManic.gif'></center>
 Existe una opción de filtros CRT, al estilo clásico:
@@ -80,10 +80,11 @@ Se requiere:
 
 <br><br>
 <h1>ArduinoDroid</h1>
-Se debe ejecutar, sólo una vez, el script makearduinodroidwin.bat, que nos deja toda la estructura de datos del directorio dataFlash, así como el resto de archivos, en el directorio desde el que se lanza el script.<br>
-Básicamente, nos quedan todos los archivos en un único nivel, sin subdirectorios posibles.
-El directorio 'notdelete' es interno del script y se utiliza para copiar el gbCompileOpt.h.<br>
-Al finalizar, el propio script, podemos abrir el <b>galaksija.ino</b>, y recompilar.<br>
+Se debe ejecutar, sólo una vez, el script <b>makearduinodroidwin.bat</b>, que nos deja toda la estructura de datos del directorio dataFlash, así como el resto de archivos, en el directorio desde el que se lanza el script.<br>
+Básicamente, nos quedan todos los archivos en un único nivel, sin subdirectorios posibles.<br>
+El directorio 'notdelete' es interno del script y se utiliza para copiar el <b>gbCompileOpt.h</b>.<br>
+Al finalizar, el propio script, podemos abrir el <b>galaksija.ino</b>, y recompilar desde el ArduinoDroid, sin nada especial. El script posee una pausa al inicio, por si queremos parar el script desde fuera, así como una parada al final, para ver los resultados del proceso.<br>
+Si nos damos cuenta, todo gira en torno al pragma <b>gb_use_lib_compile_arduinodroid</b> de la cabecera <b>gbCompileOpt.h</b>, que en modo normal se utiliza con paths de múltiples niveles y en ArduinoDroid con el script, en un sólo nivel.<br>
 Este script busca los archivos subiendo niveles hasta llegar al <b>TinyGalaksijattgovga32/galaksija</b>, así que se requiere que baje el proyecto completo con toda la estructura:
 <pre>
  TinyGalaksijattgovga32
@@ -176,17 +177,24 @@ Los GAL deben ser de tamaño 8268 bytes.
 
 <br><br>
 <h1>Estadísticas</h1>
-Hay una opción es <b>OSD Options</b> que nos permite ver lo que se llama el OSD, que son las estadísticas de consumos de CPU y video, por cada segundo.
+Hay una opción es <b>OSD Options</b> que nos permite ver lo que se llama el OSD, que son las estadísticas de consumos de CPU y video, por cada segundo (1000 milisegundos).
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewStatsCPU.gif'></center>
+En una emulación de 50 fps (cuadros por segundo) existen 2 secciones:
 <ul>
- <li><b>C:</b> Microsegundos del ESP32 para el frame actual de 20 milisegundos.</li>
- <li><b>M:</b> Microsegundos mínimos del ESP32 para el frame de 20 milisegundos.</li>
- <li><b>MX:</b> Microsegundos máximos del ESP32 para el frame de 20 milisegundos.</li>
- <li><b>I:</b> Microsegundos libres del ESP32 para el frame de 20 milisegundos, quitando el consumo de video.</li>
- <li><b>FPS:</b> FPS que procesa el emulador.</li>
- <li><b>FND:</b> FPS que nos daría si no lo limitaramos a 20 milisegundos por frame.</li>
- <li><b>V:</b> Microsegundos del ESP32 para el volcado de un frame cada 20 milisegundos.</li>
- <li><b>F:</b> FPS reales a los que estamos volcando el video.</li>
+ <li>Tiempo de CPU (20 milisegundos)</li>
+ <li>Tiempo de volcado de video (20 milisegundos)</li>
+</ul>
+Son 20 milisegundos, porque son 50 fps (1000 / 50 = 20). El tiempo de volcado de video, no tiene porque ser 50 fps reales, dado que lo importante, es el de CPU, que es el que va a marcar los 50 fps reales. Podemos pues, conseguir 50 fps de CPU, pero tener 24 fps en volcado de video, y sería totalmente funcional. No obstante, en este emulador, se consigue superar los 50 fps.<br>
+Se han puesto las estadísticas a la derecha y en vertical, para no interferir en ningún momente en la pantalla emulada.
+<ul>
+ <li><b>C:</b> Los microsegundos del ESP32 que tarda en procesar el frame actual de 20 milisegundos.</li>
+ <li><b>M:</b> Los microsegundos del ESP32 que tarda en procesar el frame más rápido de 20 milisegundos en 1000 milisegundos.</li>
+ <li><b>MX:</b> Los microsegundos del ESP32 que tarda en procesar el frame más lento de 20 milisegundos en 1000 milisegundos.</li>
+ <li><b>I:</b> Los microsegundos que queda libre el ESP32 para el frame actual de 20 milisegundos, teniendo en cuenta en el cálculo, el consumo del volcado de video.</li>
+ <li><b>FPS:</b> FPS reales que procesa el emulador en 1000 milisegundos.</li>
+ <li><b>FND:</b> FPS que nos daría si no lo limitaramos a 20 milisegundos por frame, es decir, que en el menú de la CPU tengamos 0 ms (rápido).</li>
+ <li><b>V:</b> Los microsegundos del ESP32 que tarda en volcar un frame de 20 milisegundos.</li>
+ <li><b>F:</b> Los FPS reales a los que estamos volcando el video realmente.</li>
 </ul>
 
 
