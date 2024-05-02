@@ -195,7 +195,7 @@ Se han puesto las estadísticas a la derecha y en vertical, para no interferir e
 | ----- | ---------------------------------------------------------------------------------------------|
 | C     | Microsegundos del ESP32 que tarda en procesar el frame actual de 20 milis                    |
 | M     | Microsegundos del ESP32 que tarda en procesar el frame más rápido de 20 milis en 1000 milis  |
-| MX    | Microsegundos del ESP32 que tarda en procesar el frame más lento de 20 miliss en 1000 milis  |
+| MX    | Microsegundos del ESP32 que tarda en procesar el frame más lento de 20 milis en 1000 milis   |
 | I     | Microsegundos libres del ESP32 en un frame de 20 milis, contando el volcado de video         |
 | FPS   | FPS reales que procesa el emulador en 1000 milis                                             |
 | FND   | FPS que nos daría sin límite en 20 milis por frame, poniendo en menú CPU a 0 ms (rápido)     |
@@ -232,7 +232,31 @@ Están emuladas las siguiente teclas:
 | SCROLL            | SCROLL                     | 52               |
 | SHIFT             | SHIFT izquierdo o derecho  | 53               |
   
-La entrada 51 de Galaksija, que sería el DELETE no está mapeada en el emulador.
+La entrada 51 de Galaksija, que sería el DELETE no está mapeada en el emulador.<br>
+La tecla F1 del teclado PS/2 saca el menú OSD del emulador.
+
+
+<br><br>
+<h1>Teclado remoto</h1>
+Se permite usar el teclado desde la consolta de Visual Studio o desde un terminal putty.<br>
+Tenemos que activar en el <b>gbConfig.h</b> el pragma <b>use_lib_log_keyboard_uart</b>, compilar y ejecutar.<br>
+No estan todas las teclas mapeadas, y es algo básico, útil para pruebas, sin falta de usar el teclado PS/2 real.
+
+| Teclas PC         | Función                    |
+| ----------------- | -------------------------- |
+| F2 o TAB          | Saca el OSD                |
+| ESC               | Sale del menú              |
+| Arriba            | Arriba                     |
+| Abajo             | Abajo                      |
+| Izquierda         | Izquierda                  |
+| Derecha           | Derecha                    |
+| Borrar o DEL      | Borrar                     |
+| ENTER             | ENTER                      |
+| 0 .. 9            | 0 .. 9                     |
+| A .. Z            | A .. Z                     |
+
+
+
 
 
 <br><br>
