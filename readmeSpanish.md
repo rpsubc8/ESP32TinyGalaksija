@@ -207,6 +207,7 @@ Se han puesto las estadísticas a la derecha y en vertical, para no interferir e
 Se requiere un teclado 100% PS/2, y que no requiera comando de inicialización.<br>
 El Galaksija tiene un buffer para teclas pulsadas de 54 elementos.<br>
 Están emuladas las siguiente teclas:
+
 | Teclas emulador   | Teclas (teclado PS/2 real) | Buffer Galaksija |
 | ----------------- | -------------------------- | ---------------- |
 | 0 .. 9            | 0 .. 9                     | 32 .. 41         |
@@ -215,29 +216,19 @@ Están emuladas las siguiente teclas:
 | Abajo             | Abajo                      | 28               |
 | Izquierda         | Izquierda                  | 29               |
 | Derecha           | Derecha                    | 30               |
-| Barra espaciadora | barra espaciadora          | 31               |
-
-
-<ul> 
- <li><b>0 .. 9: </b> teclas PS/2 numéricas del 0..9. - En el buffer de Galaksija 32..41</li>
- <li><b>A .. Z: </b> teclas PS/2 caracter A..Z - En el buffer de Galaksija 1..26</li>
- <li><b>Arriba:</b> Cursor PS/2 arriba - En el buffer de Galaksija 27 </li>
- <li><b>Abajo:</b> Cursor PS/2 abajo - En el buffer de Galaksija 28 </li>
- <li><b>Izquierda:</b> Cursor PS/2 izquierda - En el buffer de Galaksija 29</li>
- <li><b>Derecha:</b> Cursor PS/2 derecha - En el buffer de Galaksija 30</li>
- <li><b>Barra espaciadora:</b> PS/2 barra espaciadora - En el buffer de Galaksija 31</li>
- <li><b>Borrar:</b> PS/2 tecla borrar o suprimir- En el buffer de Galaksija 29</li>
- <li><b>;</b> PS/2 tecla ; - En el buffer 42</li>
- <li><b>"</b> PS/2 tecla ' - En el buffer 43</li>
- <li><b>,</b> PS/2 tecla , - En el buffer 44</li>
- <li><b>=</b> PS/2 tecla = - En el buffer 45</li>
- <li><b>.</b> PS/2 tecla . - En el buffer 46</li>
- <li><b>/</b> PS/2 tecla / - En el buffer 47</li>   
- <li><b>ENTER</b> PS/2 tecla ENTER o RETURN - En el buffer 48</li>   
- <li><b>CONTROL</b> PS/2 tecla CONTROL - En el buffer 50</li>
- <li><b>SCROLL</b> PS/2 tecla SCROLL - En el buffer 52</li>
- <li><b>SHIFT</b> PS/2 tecla SHIFT izquierdo o derecho - En el buffer 53</li>
-</ul>
+| Barra espaciadora | Barra espaciadora          | 31               |
+| Borrar            | Borrar o Suprimir          | 29               |
+| ;                 | ;                          | 42               |
+| "                 | '                          | 43               |
+| ,                 | ,                          | 44               |
+| =                 | =                          | 45               |
+| .                 | .                          | 46               |
+| /                 | /                          | 47               |
+| ENTER             | ENTER o RETURN             | 48               |
+| CONTROL           | CONTROL                    | 50               |
+| SCROLL            | SCROLL                     | 52               |
+| SHIFT             | SHIFT izquierdo o derecho  | 53               |
+  
 La entrada 51 de Galaksija, que sería el DELETE no está mapeada en el emulador.
 
 
