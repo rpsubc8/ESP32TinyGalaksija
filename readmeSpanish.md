@@ -192,6 +192,7 @@ Son 20 milisegundos, porque son 50 fps (1000 / 50 = 20). El tiempo de volcado de
 Se han puesto las estadísticas a la derecha y en vertical, para no interferir en ningún momento en la pantalla emulada.
 
 | Campo | Descripción                                                                                  |
+| ----- | ---------------------------------------------------------------------------------------------|
 | C     | Microsegundos del ESP32 que tarda en procesar el frame actual de 20 milis                    |
 | M     | Microsegundos del ESP32 que tarda en procesar el frame más rápido de 20 milis en 1000 milis  |
 | MX    | Microsegundos del ESP32 que tarda en procesar el frame más lento de 20 miliss en 1000 milis  |
