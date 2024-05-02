@@ -190,17 +190,19 @@ En una emulación de 50 fps (cuadros por segundo) existen 2 secciones:
 </ul>
 Son 20 milisegundos, porque son 50 fps (1000 / 50 = 20). El tiempo de volcado de video, no tiene porque ser 50 fps reales, dado que lo importante, es el de CPU, que es el que va a marcar los 50 fps reales. Podemos pues, conseguir 50 fps de CPU, pero tener 24 fps en volcado de video, y sería totalmente funcional. No obstante, en este emulador, se consigue superar los 50 fps reales.<br>
 Se han puesto las estadísticas a la derecha y en vertical, para no interferir en ningún momento en la pantalla emulada.
-<ul>
- <li><b>C:</b> Los microsegundos del ESP32 que tarda en procesar el frame actual de 20 milisegundos.</li>
- <li><b>M:</b> Los microsegundos del ESP32 que tarda en procesar el frame más rápido de 20 milisegundos en 1000 milisegundos.</li>
- <li><b>MX:</b> Los microsegundos del ESP32 que tarda en procesar el frame más lento de 20 milisegundos en 1000 milisegundos.</li>
- <li><b>I:</b> Los microsegundos que queda libre el ESP32 para el frame actual de 20 milisegundos, teniendo en cuenta en el cálculo, el consumo del volcado de video.</li>
- <li><b>FPS:</b> FPS reales que procesa el emulador en 1000 milisegundos.</li>
- <li><b>FND:</b> FPS que nos daría si no lo limitaramos a 20 milisegundos por frame, es decir, que en el menú de la CPU tengamos 0 ms (rápido).</li>
- <li><b>V:</b> Los microsegundos del ESP32 que tarda en volcar un frame de 20 milisegundos.</li>
- <li><b>F:</b> Los FPS reales a los que estamos volcando el video realmente.</li>
-</ul>
 
+| Campo | Descripción                                                                                  |
+| C     | Microsegundos del ESP32 que tarda en procesar el frame actual de 20 milis                    |
+| M     | Microsegundos del ESP32 que tarda en procesar el frame más rápido de 20 milis en 1000 milis  |
+| MX    | Microsegundos del ESP32 que tarda en procesar el frame más lento de 20 miliss en 1000 milis  |
+| I     | Microsegundos libres del ESP32 en un frame de 20 milis, contando el volcado de video         |
+| FPS   | FPS reales que procesa el emulador en 1000 milis                                             |
+| FND   | FPS que nos daría sin límite en 20 milis por frame, poniendo en menú CPU a 0 ms (rápido)     |
+| V     | Microsegundos del ESP32 que tarda en volcar un frame de 20 milis                             |
+| F     | FPS reales a los que estamos volcando el video realmente                                     |
+
+
+  
 
 <br><br>
 <h1>Teclado PS/2</h1>
