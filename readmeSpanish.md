@@ -207,7 +207,18 @@ Se han puesto las estadísticas a la derecha y en vertical, para no interferir e
 Se requiere un teclado 100% PS/2, y que no requiera comando de inicialización.<br>
 El Galaksija tiene un buffer para teclas pulsadas de 54 elementos.<br>
 Están emuladas las siguiente teclas:
-<ul>
+| Teclas emulador   | Teclas (teclado PS/2 real) | Buffer Galaksija |
+| ----------------- | -------------------------- | ---------------- |
+| 0 .. 9            | 0 .. 9                     | 32 .. 41         |
+| A .. Z            | A .. Z                     |  1 .. 26         |
+| Arriba            | Arriba                     | 27               |
+| Abajo             | Abajo                      | 28               |
+| Izquierda         | Izquierda                  | 29               |
+| Derecha           | Derecha                    | 30               |
+| Barra espaciadora | barra espaciadora          | 31               |
+
+
+<ul> 
  <li><b>0 .. 9: </b> teclas PS/2 numéricas del 0..9. - En el buffer de Galaksija 32..41</li>
  <li><b>A .. Z: </b> teclas PS/2 caracter A..Z - En el buffer de Galaksija 1..26</li>
  <li><b>Arriba:</b> Cursor PS/2 arriba - En el buffer de Galaksija 27 </li>
