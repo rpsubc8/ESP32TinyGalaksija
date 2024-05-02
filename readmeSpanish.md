@@ -105,7 +105,9 @@ El ArduinoDroid (6.3.1) con soporte para ESP32 sólo funciona con procesadores d
 
 <br><br>
 <h1>Arduino Web Editor</h1>
-Se debe ejecutar, sólo una vez, el script makearduinodroidwin.bat. Una vez finalizado, se sube a la nube como un proyecto cualquiera, ya sea comprimido en zip o por archivos. Básicamente es lo mismo, dado que se intenta dejar todo en un único nivel de directorio.
+Se debe ejecutar, sólo una vez, el script makearduinodroidwin.bat. Una vez finalizado, se sube a la nube como un proyecto cualquiera, ya sea comprimido en zip o por archivos.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewArduinoWebEditor.gif'></center>
+Básicamente es lo mismo, dado que se intenta dejar todo en un único nivel de directorio. Se recomienda importar el proyecto comprimido en zip con una compresión normal, nada de máxima, dado que algunos editores web del cloud no soportan el zip al 100%.
 
 
 <br><br>
