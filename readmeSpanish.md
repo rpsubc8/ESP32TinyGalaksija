@@ -17,8 +17,10 @@ He realizado varias modificaciones:
  <li>Cambio del modo de video en caliente, en cualquier momento y sin necesidad de reiniciar.</li>
  <li>Filtro color crt b&w, verde o naranja</li>
  <li>Reducción de emulación de 64KB de RAM a sólo 8 KB. Sólo se emulan los 6 KB de RAM de Galaksija.</li>
+ <li>Mapeo de las ROMs en Flash, en lugar de RAM</li>
  <li>Varias optimizaciones en volcado de video y emulación CPU.</li>
  <li>Reducción de código de emulación Z80 a sólo 2 archivos (Z80Z80.h y Z80Z80.cpp).</li>
+ <li>Reducción y compactación del proyecto para poder ser llevado a plataformas más limitadas que el ESP32.</li>
  <li>Estadísticas de CPU y Video en OSD.</li>
  <li>Estadísticas de RAM libre desde OSD.</li> 
  <li>Teclado remoto UART.</li>
@@ -85,7 +87,7 @@ Básicamente, nos quedan todos los archivos en un único nivel, sin subdirectori
 El directorio 'notdelete' es interno del script y se utiliza para copiar el <b>gbCompileOpt.h</b>.<br>
 Al finalizar, el propio script, podemos abrir el <b>galaksija.ino</b>, y recompilar desde el ArduinoDroid, sin nada especial. El script posee una pausa al inicio, por si queremos parar el script desde fuera, así como una parada al final, para ver los resultados del proceso.<br>
 Si nos damos cuenta, todo gira en torno al pragma <b>gb_use_lib_compile_arduinodroid</b> de la cabecera <b>gbCompileOpt.h</b>, que en modo normal se utiliza con paths de múltiples niveles y en ArduinoDroid con el script, en un sólo nivel.<br>
-Este script busca los archivos subiendo niveles hasta llegar al <b>TinyGalaksijattgovga32/galaksija</b>, así que se requiere que baje el proyecto completo con toda la estructura:
+Este script busca los archivos subiendo niveles hasta llegar al <b>TinyGalaksijattgovga32/galaksija</b>, así que se requiere que se baje el proyecto completo con toda la estructura:
 <pre>
  TinyGalaksijattgovga32
   galaksija
@@ -197,6 +199,33 @@ Se han puesto las estadísticas a la derecha y en vertical, para no interferir e
  <li><b>F:</b> Los FPS reales a los que estamos volcando el video realmente.</li>
 </ul>
 
+
+<br><br>
+<h1>Teclado PS/2</h1>
+Se requiere un teclado 100% PS/2, y que no requiera comando de inicialización.<br>
+El Galaksija tiene un buffer para teclas pulsadas de 54 elementos.<br>
+Están emuladas las siguiente teclas:
+<ul>
+ <li><b>0 .. 9: </b> teclas PS/2 numéricas del 0..9. - En el buffer de Galaksija 32..41</li>
+ <li><b>A .. Z: </b> teclas PS/2 caracter A..Z - En el buffer de Galaksija 1..26</li>
+ <li><b>Arriba:</b> Cursor PS/2 arriba - En el buffer de Galaksija 27 </li>
+ <li><b>Abajo:</b> Cursor PS/2 abajo - En el buffer de Galaksija 28 </li>
+ <li><b>Izquierda:</b> Cursor PS/2 izquierda - En el buffer de Galaksija 29</li>
+ <li><b>Derecha:</b> Cursor PS/2 derecha - En el buffer de Galaksija 30</li>
+ <li><b>Barra espaciadora:</b> PS/2 barra espaciadora - En el buffer de Galaksija 31</li>
+ <li><b>Borrar:</b> PS/2 tecla borrar o suprimir- En el buffer de Galaksija 29</li>
+ <li><b>;</b> PS/2 tecla ; - En el buffer 42</li>
+ <li><b>"</b> PS/2 tecla ' - En el buffer 43</li>
+ <li><b>,</b> PS/2 tecla , - En el buffer 44</li>
+ <li><b>=</b> PS/2 tecla = - En el buffer 45</li>
+ <li><b>.</b> PS/2 tecla . - En el buffer 46</li>
+ <li><b>/</b> PS/2 tecla / - En el buffer 47</li>   
+ <li><b>ENTER</b> PS/2 tecla ENTER o RETURN - En el buffer 48</li>   
+ <li><b>CONTROL</b> PS/2 tecla CONTROL - En el buffer 50</li>
+ <li><b>SCROLL</b> PS/2 tecla SCROLL - En el buffer 52</li>
+ <li><b>SHIFT</b> PS/2 tecla SHIFT izquierdo o derecho - En el buffer 53</li>
+</ul>
+La entrada 51 de Galaksija, que sería el DELETE no está mapeada en el emulador.
 
 
 <br><br>
