@@ -236,18 +236,46 @@ La entrada 51 de Galaksija, que sería el DELETE no está mapeada en el emulador
 <h1>GPIO</h1>
 El archivo <b>hardware.h</b> contiene lo necesario para el GPIO de:
 <ul>
- <li><b>teclado:</b> KEYBOARD_DATA (32) y KEYBOARD_CLK (33)</li>
- <li><b>VGA sincronismos:</b> HSYNC_PIN (23), VSYNC_PIN (15)</li>
- <li><b>VGA rojo</b> PIN_RED_LOW (21), PIN_RED_HIGH (22)</li>
- <li><b>VGA verde</b> PIN_GREEN_LOW (18), PIN_GREEN_HIGH (19)</li>
- <li><b>VGA azul</b> PIN_BLUE_LOW (4), PIN_BLUE_HIGH (5)</li>
+ <li>
+  <b>Teclado:</b>
+  <ul>
+   <li>KEYBOARD_DATA - (32)</li>
+   <li>KEYBOARD_CLK - (33)</li>
+  </ul> 
+ </li> 
+ <li>
+  <b>VGA sincronismos:</b>
+  <ul>
+   <li>HSYNC_PIN - (23)</li>
+   <li>VSYNC_PIN - (15)</li>
+  </ul>
+ </li>
+ <li>
+  <b>VGA rojo</b> 
+  <ul>
+   <li>PIN_RED_LOW - (21)</li>
+   <li>PIN_RED_HIGH -(22)</li>
+  </ul>
+ </li>
+ <li>
+  <b>VGA verde</b> 
+  <ul>
+   <li>PIN_GREEN_LOW - (18)</li>
+   <li>PIN_GREEN_HIGH - (19)</li>
+  </ul>
+ <li>
+  <b>VGA azul</b>
+  <ul>
+   <li>PIN_BLUE_LOW - (4)</li>
+   <li>PIN_BLUE_HIGH - (5)</li>
+  </ul>
 </ul>
 Está pensado para la placa TTGO VGA v1.2, así que si tenemos otro tipo de placa, aquí es donde debemos definir los cambios.<br>
 Cuando usamos 6 bpp, estamos usando todos los GPIO de VGA, pero cuando usamos el 3 bpp, sólo usamos:
 <ul>
- <li>PIN_RED_HIGH (22)</li>
- <li>PIN_GREEN_HIGH (19)</li>
- <li>PIN_BLUE_HIGH (5)</li>
+ <li>PIN_RED_HIGH - (22)</li>
+ <li>PIN_GREEN_HIGH - (19)</li>
+ <li>PIN_BLUE_HIGH - (5)</li>
 </ul>
 
 
