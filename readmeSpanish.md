@@ -238,14 +238,16 @@ La tecla F1 del teclado PS/2 saca el menú OSD del emulador.
 
 <br><br>
 <h1>Teclado remoto</h1>
-Se permite usar el teclado desde la consolta de Visual Studio o desde un terminal putty.<br>
+Se permite usar el teclado desde la consola de Visual Studio o desde un terminal putty.<br>
+El teclado remoto no tiene la misma respuesta que un teclado real, dado que se envían comandos de teclas, y no un mapa de caracteres pulsados.<br>
+En la consola del Arduino IDE no se puede usar, porque siempre se espera el envio del ENTER para aceptar comandos.<br>
 Tenemos que activar en el <b>gbConfig.h</b> el pragma <b>use_lib_log_keyboard_uart</b>, compilar y ejecutar.<br>
 No estan todas las teclas mapeadas, y es algo básico, útil para pruebas, sin falta de usar el teclado PS/2 real.
 
 | Teclas PC         | Función                    |
 | ----------------- | -------------------------- |
-| F2 o TAB          | Saca el OSD                |
-| ESC               | Sale del menú              |
+| F2 o TAB          | Muestra el menú OSD        |
+| ESC               | Salir del menú             |
 | Arriba            | Arriba                     |
 | Abajo             | Abajo                      |
 | Izquierda         | Izquierda                  |
