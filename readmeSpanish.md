@@ -159,7 +159,7 @@ Siempre que carguemos un GTP (cinta) desde el OSD, nos permitirá elegir entre:
  <li><b>Load:</b> Nos permite cargarlo.</li>
  <li><b>Select:</b> Sólo lo selecciona, pudiendo desde BASIC leerlo con el comando OLD.</li>
 </ul>
-Cuando se lanza el comando OLD, existe un pequeño truco no 100% correcto, para interceptar la rutina de ROM, y proceder a cargarlo. Dicha intercepción se puede deshabilitar también desde el OSD.<br>
+Cuando se lanza el comando OLD, existe un pequeño truco no 100% correcto, pero eficiente en consumo de host, para interceptar la rutina de ROM, y proceder a cargarlo. Dicha intercepción se puede deshabilitar también desde el OSD.<br>
 Si hemos elegido la carga, en lugar de la selección, cuando ya hemos elegido una cinta desde el OSD, nos aparecerá si queremos usar el <b>WARM START BASIC</b>.<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewWarmStart.gif'></center>
 Posteriormente, nos dirá si queremos que haga un <b>RUN</b> automático desde BASIC o no.
@@ -184,8 +184,8 @@ En una emulación de 50 fps (cuadros por segundo) existen 2 secciones:
  <li>Tiempo de CPU (20 milisegundos)</li>
  <li>Tiempo de volcado de video (20 milisegundos)</li>
 </ul>
-Son 20 milisegundos, porque son 50 fps (1000 / 50 = 20). El tiempo de volcado de video, no tiene porque ser 50 fps reales, dado que lo importante, es el de CPU, que es el que va a marcar los 50 fps reales. Podemos pues, conseguir 50 fps de CPU, pero tener 24 fps en volcado de video, y sería totalmente funcional. No obstante, en este emulador, se consigue superar los 50 fps.<br>
-Se han puesto las estadísticas a la derecha y en vertical, para no interferir en ningún momente en la pantalla emulada.
+Son 20 milisegundos, porque son 50 fps (1000 / 50 = 20). El tiempo de volcado de video, no tiene porque ser 50 fps reales, dado que lo importante, es el de CPU, que es el que va a marcar los 50 fps reales. Podemos pues, conseguir 50 fps de CPU, pero tener 24 fps en volcado de video, y sería totalmente funcional. No obstante, en este emulador, se consigue superar los 50 fps reales.<br>
+Se han puesto las estadísticas a la derecha y en vertical, para no interferir en ningún momento en la pantalla emulada.
 <ul>
  <li><b>C:</b> Los microsegundos del ESP32 que tarda en procesar el frame actual de 20 milisegundos.</li>
  <li><b>M:</b> Los microsegundos del ESP32 que tarda en procesar el frame más rápido de 20 milisegundos en 1000 milisegundos.</li>
@@ -203,10 +203,20 @@ Se han puesto las estadísticas a la derecha y en vertical, para no interferir e
 <h1>GPIO</h1>
 El archivo <b>hardware.h</b> contiene lo necesario para el GPIO de:
 <ul>
- <li><b>teclado:</b> KEYBOARD_DATA y KEYBOARD_CLK</li>
- <li><b>VGA:</b> HSYNC_PIN, VSYNC_PIN, así como los 3 GPIO's de 3bpp o los 6</li>
+ <li><b>teclado:</b> KEYBOARD_DATA (32) y KEYBOARD_CLK (33)</li>
+ <li><b>VGA sincronismos:</b> HSYNC_PIN (23), VSYNC_PIN (15)</li>
+ <li><b>VGA rojo</b> PIN_RED_LOW (21), PIN_RED_HIGH (22)</li>
+ <li><b>VGA verde</b> PIN_GREEN_LOW (18), PIN_GREEN_HIGH (19)</li>
+ <li><b>VGA azul</b> PIN_BLUE_LOW (4), PIN_BLUE_HIGH (5)</li>
 </ul>
-Está pensado para la placa TTGO VGA v1.2, así que si tenemos otro tipo de placa, aquí es donde debemos definir los cambios.
+Está pensado para la placa TTGO VGA v1.2, así que si tenemos otro tipo de placa, aquí es donde debemos definir los cambios.<br>
+Cuando usamos 6 bpp, estamos usando todos los GPIO de VGA, pero cuando usamos el 3 bpp, sólo usamos:
+<ul>
+ <li>PIN_RED_HIGH (22)</li>
+ <li>PIN_GREEN_HIGH (19)</li>
+ <li>PIN_BLUE_HIGH (5)</li>
+</ul>
+
 
 
 <br><br>
