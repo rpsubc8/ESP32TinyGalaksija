@@ -121,4 +121,40 @@ PLATFORMIO 2.2.1 must be installed from the Visual Studio extensions. Espressif3
 The working directory <b>TinyGalaksijattgovga32</b> will then be selected.
 We must modify the <b>platformio.ini</b> file and the <b>upload_port</b> option to select the COM port where we have our TTGO VGA32 board.
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewPlatformIO.gif'></center>
-Then we will proceed to compile and upload to the board. No partitions are used, so we must upload the entire compiled binary. Everything is ready to avoid having to install the bitluni or fabgl libraries. 
+Then we will proceed to compile and upload to the board. No partitions are used, so we must upload the entire compiled binary. Everything is ready to avoid having to install the bitluni or fabgl libraries.
+
+
+<br><br>
+<h1>Arduino IDE</h1>
+The entire project is compatible with Arduino 1.8.11 framework. We just have to open <b>galaksija.ino</b> from the <b>galaksija</b> directory.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewArduinoIDEpreferences.gif'></center>
+We must install the spressif extensions in the additional card url manager <b>https://dl.espressif.com/dl/package_esp32_index.json</b><br>
+The project is already prepared, so no bitluni or fabgl library is needed. We must disable the PSRAM option, and if the binary exceeds 1 MB, select 4 MB partition when uploading. Although the code does not use PSRAM, if the option is active and our ESP32 does not have it, an exception will be generated and it will restart in loop mode.
+
+
+<br><br>
+<h1>Usability</h1>
+The following actions are allowed from the menu (F1 key):
+<ul>
+ <li>Load or select a tape (GTP)</li>
+ <li>Load or select a snapshot (GAL)</li>
+ <li>Select language Spanish or English</li>
+ <li>Select 16 video modes</li>
+ <li>Change the color green, orange or black and white, like retro monitors</li>
+ <li>Show CPU and video statistics</li>
+ <li>Enable USB debugging output (serial)</li>
+ <li>Help</li>
+ <li>Reset the ESP32 or the emulator</li>
+ <li>Intercept the tape routine when we type the OLD command from BASIC, and we have selected a GTP, instead of loading and executing it.</li>
+ <li>Change polling milliseconds for video, keyboard</li>
+ <li>View free RAM</li>
+</ul>
+There is a basic low-resource OSD, that is, very simple, which is displayed by pressing the <b>F1</b> key.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewOSD.gif'></center>
+Some menus and submenus are immediately executed, that is, when you accept with the ENTER key, the OSD is closed and the action is applied. Other menus, on the other hand, return to the previous menu.<br>
+You can always exit the OSD with the ESC key.<br>
+The Up and Down cursors allow you to navigate through each action. If they are held down for a couple of milliseconds, they allow quick action.
+
+
+<br><br>
+<h1>GTP (tapes)</h1>
