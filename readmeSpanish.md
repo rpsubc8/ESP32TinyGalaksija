@@ -82,7 +82,7 @@ Se requiere:
 
 <br><br>
 <h1>ArduinoDroid</h1>
-El ArduinoDroid nos permitirá compilar y subir al ESP32 el proyecto de <b>Galaksija</b> desde un dispositivo Android de 64 bits, es decir, un móvil, una tablet o un android box, siempre y cuando, nuestro dispositvo esté soportado.<br>
+El ArduinoDroid nos permitirá compilar y subir al ESP32 el proyecto de <b>Galaksija</b> desde un dispositivo Android de 64 bits, es decir, un móvil, una tablet o un android box, siempre y cuando, nuestro dispositivo esté soportado.<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewWin.gif'></center>
 Si estamos en windows, se debe ejecutar, sólo una vez, el script <b>makearduinodroidwin.bat</b>, que nos deja toda la estructura de datos del directorio dataFlash, así como el resto de archivos, en el directorio desde el que se lanza el script.<br>
 Si estamos en un Android con <b>termux</b> o en Linux, debemos ejecutar el <b>makearduinodroidlinux.sh</b>.
