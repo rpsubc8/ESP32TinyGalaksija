@@ -9,7 +9,7 @@ He realizado varias modificaciones:
  <li>Uso de un sólo core</li>
  <li>OSD de bajos recursos</li>
  <li>Creado proyecto compatible con Arduino IDE y Platform IO</li>
- <li>Proyecto compatible con Web Editor y ArduinoDroid (6.3.1) con tool makearduinodroidwin.bat</li>
+ <li>Proyecto compatible con Web Editor y ArduinoDroid (6.3.1) con tool <b>makearduinodroidwin.bat</b> y <b>makearduinodroidlinux.sh</b></li>
  <li>Soporte para modo 8 y 64 colores (versión reducida de Ricardo Massaro).</li>
  <li>VGA 360x200, 320x200 y 320x240</li>
  <li>Selección de modo de video de inicio en compilación.</li>
@@ -83,7 +83,10 @@ Se requiere:
 <br><br>
 <h1>ArduinoDroid</h1>
 El ArduinoDroid nos permitirá compilar y subir al ESP32 el proyecto de <b>Galaksija</b> desde un dispositivo Android de 64 bits, es decir, un móvil, una tablet o un android box, siempre y cuando, nuestro dispositvo esté soportado.<br>
-Se debe ejecutar, sólo una vez, el script <b>makearduinodroidwin.bat</b>, que nos deja toda la estructura de datos del directorio dataFlash, así como el resto de archivos, en el directorio desde el que se lanza el script.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewWin.gif'></center>
+Si estamos en windows, se debe ejecutar, sólo una vez, el script <b>makearduinodroidwin.bat</b>, que nos deja toda la estructura de datos del directorio dataFlash, así como el resto de archivos, en el directorio desde el que se lanza el script.<br>
+Si estamos en un Android con <b>termux</b> o en Linux, debemos ejecutar el <b>makearduinodroidlinux.sh</b>.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewTermux.gif'></center>
 Básicamente, nos quedan todos los archivos en un único nivel, sin subdirectorios posibles.<br>
 El directorio 'notdelete' es interno del script y se utiliza para copiar el <b>gbCompileOpt.h</b>.<br>
 Al finalizar, el propio script, podemos abrir el <b>galaksija.ino</b>, y recompilar desde el ArduinoDroid, sin nada especial. El script posee una pausa al inicio, por si queremos parar el script desde fuera, así como una parada al final, para ver los resultados del proceso.<br>
