@@ -261,7 +261,10 @@ No estan todas las teclas mapeadas, y es algo básico, útil para pruebas, sin f
 | ENTER             | ENTER                      |
 | 0 .. 9            | 0 .. 9                     |
 | A .. Z            | A .. Z                     |
+| .                 | .                          |
+| -                 | SHIFT izquierdo            |
 
+Si pulsamos el '-' al mismo tiempo que otra tecla, por ejemplo, la 'A' es el equivalente a pulsar el (SHIFT + A) en el emulador.
 
 
 
