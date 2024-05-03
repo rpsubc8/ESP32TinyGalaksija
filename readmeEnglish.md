@@ -78,3 +78,30 @@ Is required:
  </ul>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/ttgovga32v12.jpg'></center>
 
+
+<br><br>
+<h1>ArduinoDroid</h1>
+The ArduinoDroid will allow us to compile and upload the <b>Galaksija</b> project to the ESP32 from a 64-bit Android device, that is, a mobile phone, a tablet or an Android box, as long as our device is supported.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewWin.gif'></center>
+If we are on Windows, the <b>makearduinodroidwin.bat</b> script must be executed just once, which leaves us with the entire data structure of the dataFlash directory, as well as the rest of the files, in the directory from which the script is launched.<br>
+If we are on Android with <b>termux</b> or Linux, we must run <b>makearduinodroidlinux.sh</b>.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewTermux.gif'></center>
+Basically, we are left with all the files on a single level, without possible subdirectories.<br>
+The 'notdelete' directory is internal to the script and is used to copy the <b>gbCompileOpt.h</b>.<br>
+At the end of the script itself, we can open the <b>galaksija.ino</b>, and recompile from the ArduinoDroid, without anything special. The script has a pause at the beginning, in case we want to stop the script from outside, as well as a stop at the end, to see the results of the process.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewArduinoDroid.gif'></center>
+If we notice, everything revolves around the pragma <b>gb_use_lib_compile_arduinodroid</b> of the <b>gbCompileOpt.h</b> header, which in normal mode is used with multi-level paths and in ArduinoDroid with the script, in a single level.<br>
+This script searches for the files going up levels until it reaches <b>TinyGalaksijattgovga32/galaksija</b>, so it is required to download the complete project with the entire structure:
+<pre>
+ TinyGalaksijattgovga32
+  galaksija
+   dataFlash
+  include
+  lib
+  test
+ tools
+  arduinodroid
+   galaksija
+  data2h
+</pre>
+The ArduinoDroid (6.3.1) with ESP32 support only works with 64-bit processors. 
