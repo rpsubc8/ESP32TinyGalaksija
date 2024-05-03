@@ -158,3 +158,26 @@ The Up and Down cursors allow you to navigate through each action. If they are h
 
 <br><br>
 <h1>GTP (tapes)</h1>
+Whenever we load a GTP (tape) from the OSD, it will allow us to choose between:
+<ul>
+ <li><b>Load:</b> Allows us to load it.</li>
+ <li><b>Select:</b> It only selects it, being able to read it from BASIC with the OLD command.</li>
+</ul>
+When the OLD command is issued, there is a little trick that is not 100% correct, but efficient in host consumption, to intercept the ROM routine, and proceed to load it. This interception can also be disabled from the OSD.
+If we have chosen loading, instead of selection, when we have already chosen a tape from the OSD, it will appear if we want to use <b>WARM START BASIC</b>.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewWarmStart.gif'></center>
+Later, it will tell us if we want it to do an automatic RUN from BASIC or not.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewRUN.gif'></center>
+If we accept, from BASIC, RUN will be written automatically.<br>
+It is advisable to have a clean execution, whenever we load games, that is, restart the emulator, to leave everything as good as possible.<br>
+When memory errors occur, a trace is left through the serial port, and after a couple of them, the emulator (not the ESP32) restarts itself, leaving us a trace.
+
+
+<br><br>
+<h1>Snapshot GAL</h1>
+Whenever we load a GAL, it will give us the option of executing <b>RUN</b> or not from BASIC.<br>
+GALs must be 8268 bytes in size.
+
+
+<br><br>
+<h1>Statistics</h1>
