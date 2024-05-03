@@ -354,7 +354,10 @@ Existen más opciones.
 
 <br><br>
 <h1>Tool data2h</h1>
-He creado una herramienta muy básica (win32), para convertir los archivos .GTP y .GAL en .h en modo lista para ser procesados por el emulador. Tan sólo tenemos que dejar los archivos .GAL y .GTP en la carpeta <b>input/GAL</b> e <b>input/GTP</b> ejecutar el archivo <b>data2h.exe</b>, de forma que se generará una salida en el directorio <b>output/dataFlash</b>.
+He creado una herramienta muy básica (win32), para convertir los archivos .GTP y .GAL en .h en modo lista para ser procesados por el emulador.<br>
+Se recomienda tener nombres de ficheros reducidos. Además la tool realiza un cortado a 32 caracteres para mostrar en el OSD.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewWinData2h.gif'></center>
+Tan sólo tenemos que dejar los archivos .GAL y .GTP en la carpeta <b>input/GAL</b> e <b>input/GTP</b> ejecutar el archivo <b>data2h.exe</b>, de forma que se generará una salida en el directorio <b>output/dataFlash</b>.
 <a href='https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/esp32/tools/data2h'>Tool data2h</a>
 <br><br>
 <pre>
@@ -368,6 +371,12 @@ He creado una herramienta muy básica (win32), para convertir los archivos .GTP 
 </pre>
 Posteriormente debemos copiar el directorio <b>dataFlash</b> en el proyecto <b>TinyGalaksijattgovga32\galaksija</b> sobreescribiendo la carpeta dataFlash previa. Se recomienda limpiar el proyecto y volver a compilar.<br>
 Esta herramienta es muy simple, y no controla los errores, por lo que se recomienda dejarle los archivos con nombres muy simples y lo más sencillo posible.<br>
+Dado que está disponible el código fuente, se puede compilar para Linux o para Android bajo Termux. En Termux tenemos que instalar el paquete <b>gcc</b> o el <b>clang</b> y compilar:<br>
+<pre>
+ gcc -s data2h.cpp -odata2h.a
+</pre>
+Debe hacerse desde el directorio home de datos del dispositivo Android, de manera que si lo hacemos en cualqueir otro directorio, nunca se podra ejecutar el <b>data2h.a</b> creado, salvo que el dispositivo este rooteado.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewTermuxData2h.gif'></center>
 El proyecto en PLATFORM.IO está preparado para 1 MB de Flash. Si necesitamos los 4MB de flash, tendremos que modificar la entrada del archivo <b>platformio.ini</b>
 <pre>board_build.partitions = huge_app.csv</pre>
 En el Arduino IDE, debemos elegir la opción <b>Partition Scheme (Huge APP)</b>.
