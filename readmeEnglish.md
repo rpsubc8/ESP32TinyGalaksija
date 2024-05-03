@@ -9,7 +9,7 @@ I have made several modifications:
  <li>Use of a single core</li>
  <li>Low resource OSD</li>
  <li>Created project compatible with Arduino IDE and Platform IO</li>
- <li>Project compatible with Web Editor and ArduinoDroid (6.3.1) with tool <b>makearduinodroidwin.bat</b>b> and <b>makearduinodroidlinux.sh</b>b></li>
+ <li>Project compatible with Web Editor and ArduinoDroid (6.3.1) with tool <b>makearduinodroidwin.bat</b> and <b>makearduinodroidlinux.sh</b></li>
  <li>Support for mode 8 and 64 colors (reduced version by Ricardo Massaro).</li>
  <li>VGA 360x200, 320x200 and 320x240</li>
  <li>Startup video mode selection in build.</li>
@@ -56,7 +56,15 @@ The color will vary depending on whether we have video mode:
 The 64-color mode is recommended, and we will notice the snow effect on TV in blue tone (3 bpp) or gray scale (6 bpp).
 
 
-
+<br><br>
+<h1>Precompiled version</h1>
+In the precompile folder there is an already compiled version (VGA 360x200) to be able to be recorded with the flash download tool 3.9.2. with demo games in FLASH.<br><br>
+<a href='https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/esp32/precompile'>https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/esp32/precompile</a><br><br>
+We must choose the ESP32 type:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/flash00.gif'></center>
+Subsequently, we will select the files as in the attached screenshot, with the same offset values:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/flash01.gif'></center>
+And we will hit start. If everything has been correct, we will only have to restart the ESP32.
 
 
 
