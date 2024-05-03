@@ -82,10 +82,12 @@ Se requiere:
 
 <br><br>
 <h1>ArduinoDroid</h1>
+El ArduinoDroid nos permitirá compilar y subir al ESP32 el proyecto de <br>Galaksija</b> desde un dispositivo Android de 64 bits, es decir, un móvil, una tablet o un android box, siempre y cuando, nuestro dispositvo esté soportado.<br>
 Se debe ejecutar, sólo una vez, el script <b>makearduinodroidwin.bat</b>, que nos deja toda la estructura de datos del directorio dataFlash, así como el resto de archivos, en el directorio desde el que se lanza el script.<br>
 Básicamente, nos quedan todos los archivos en un único nivel, sin subdirectorios posibles.<br>
 El directorio 'notdelete' es interno del script y se utiliza para copiar el <b>gbCompileOpt.h</b>.<br>
 Al finalizar, el propio script, podemos abrir el <b>galaksija.ino</b>, y recompilar desde el ArduinoDroid, sin nada especial. El script posee una pausa al inicio, por si queremos parar el script desde fuera, así como una parada al final, para ver los resultados del proceso.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewArduinoDroid.gif'></center>
 Si nos damos cuenta, todo gira en torno al pragma <b>gb_use_lib_compile_arduinodroid</b> de la cabecera <b>gbCompileOpt.h</b>, que en modo normal se utiliza con paths de múltiples niveles y en ArduinoDroid con el script, en un sólo nivel.<br>
 Este script busca los archivos subiendo niveles hasta llegar al <b>TinyGalaksijattgovga32/galaksija</b>, así que se requiere que se baje el proyecto completo con toda la estructura:
 <pre>
