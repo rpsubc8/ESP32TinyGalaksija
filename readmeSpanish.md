@@ -378,7 +378,7 @@ Dado que está disponible el código fuente, se puede compilar para Linux o para
 <pre>
  gcc -s data2h.cpp -odata2h.a
 </pre>
-Debe hacerse desde el directorio home de datos del dispositivo Android, de manera que si lo hacemos en cualqueir otro directorio, nunca se podra ejecutar el <b>data2h.a</b> creado, salvo que el dispositivo este rooteado.
+Debe hacerse desde el directorio home de datos del dispositivo Android, de manera que si lo hacemos en cualquier otro directorio, nunca se podra ejecutar el <b>data2h.a</b> creado, salvo que el dispositivo este rooteado.
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewTermuxData2h.gif'></center>
 El proyecto en PLATFORM.IO está preparado para 1 MB de Flash. Si necesitamos los 4MB de flash, tendremos que modificar la entrada del archivo <b>platformio.ini</b>
 <pre>board_build.partitions = huge_app.csv</pre>
