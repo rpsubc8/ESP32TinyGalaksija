@@ -181,3 +181,27 @@ GALs must be 8268 bytes in size.
 
 <br><br>
 <h1>Statistics</h1>
+There is an option is <b>OSD Options</b> that allows us to see what is called the OSD, which are the statistics of CPU and video consumption, for each second (1000 milliseconds).
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewStatsCPU.gif'></center>
+In a 50 fps (frames per second) emulation there are 2 sections:
+<ul>
+ <li>CPU time (20 milliseconds)</li>
+ <li>Video dump time (20 milliseconds)</li>
+</ul>
+It's 20 milliseconds, because it's 50 fps (1000 / 50 = 20). The video dump time does not have to be 50 real fps, since what is important is the CPU time, which is what will set the real 50 fps. We can then get 50 fps from the CPU, but have 24 fps in the video dump, and it would be totally functional. However, in this emulator, it is possible to exceed 50 real fps.<br>
+The statistics have been placed on the right and vertically, so as not to interfere at any time on the emulated screen.
+
+| Field | Description                                                                                      |
+| ----- | ------------------------------------------------------------------------------------------------ |
+| C     | ESP32 microseconds that it takes to process the current 20 milli frame                           |
+| M     | Microseconds of the ESP32 that it takes to process the fastest frame of 20 millis in 1000 millis |
+| MX    | Microseconds of the ESP32 that it takes to process the slowest frame of 20 millis in 1000 millis |
+| I     | ESP32 free microseconds in a 20 milli frame, counting the video dump                             |
+| FPS   | Real FPS processed by the emulator at 1000 millis                                                |
+| FND   | FPS that would give us no limit at 20 millis per frame, setting the CPU menu to 0 ms (fast)      |
+| V     | Microseconds of the ESP32 that it takes to dump a frame of 20 millis                             |
+| F     | Real FPS we are actually dumping the video at                                                    |
+
+
+<br><br>
+<h1>PS/2 keyboard</h1>
