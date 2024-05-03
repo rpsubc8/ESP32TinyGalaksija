@@ -105,3 +105,20 @@ This script searches for the files going up levels until it reaches <b>TinyGalak
   data2h
 </pre>
 The ArduinoDroid (6.3.1) with ESP32 support only works with 64-bit processors. 
+
+
+<br><br>
+<h1>Arduino Web Editor</h1>
+The makearduinodroidwin.bat script must be executed only once. Once finished, it is uploaded to the cloud as any project, whether compressed in zip or files.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewArduinoWebEditor.gif'></center>
+It's basically the same thing, since you're trying to keep everything at a single directory level. It is recommended to import the project compressed in zip with normal compression, not maximum, since some cloud web editors do not support zip 100%.
+
+
+<br><br>
+<h1>PlatformIO</h1>
+PLATFORMIO 2.2.1 must be installed from the Visual Studio extensions. Espressif32 v3.3.2 is also required.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewPlatformIOinstall.gif'></center>
+The working directory <b>TinyGalaksijattgovga32</b> will then be selected.
+We must modify the <b>platformio.ini</b> file and the <b>upload_port</b> option to select the COM port where we have our TTGO VGA32 board.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewPlatformIO.gif'></center>
+Then we will proceed to compile and upload to the board. No partitions are used, so we must upload the entire compiled binary. Everything is ready to avoid having to install the bitluni or fabgl libraries. 
