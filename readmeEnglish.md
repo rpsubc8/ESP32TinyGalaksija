@@ -205,3 +205,56 @@ The statistics have been placed on the right and vertically, so as not to interf
 
 <br><br>
 <h1>PS/2 keyboard</h1>
+A 100% PS/2 keyboard is required, and does not require an initialization command.<br>
+The Galaksija has a 54-element keystroke buffer.<br>
+The following keys are emulated:
+
+| Emulator keys 	   | Keys (real PS/2 keyboard)  | Buffer Galaksija |
+| ----------------- | -------------------------- | ---------------- |
+| 0 .. 9            | 0 .. 9                     | 32 .. 41         |
+| A .. Z            | A .. Z                     |  1 .. 26         |
+| Above             | Above                      | 27               |
+| Below             | Below                      | 28               |
+| Left              | Left                       | 29               |
+| Right             | Right                      | 30               |
+| Space bar         | Space bar                  | 31               |
+| Delete            | Delete                     | 29               |
+| ;                 | ;                          | 42               |
+| "                 | '                          | 43               |
+| ,                 | ,                          | 44               |
+| =                 | =                          | 45               |
+| .                 | .                          | 46               |
+| /                 | /                          | 47               |
+| ENTER             | ENTER or RETURN            | 48               |
+| CONTROL           | CONTROL                    | 50               |
+| SCROLL            | SCROLL                     | 52               |
+| SHIFT             | SHIFT left or right        | 53               |
+
+Galaksija entry 51, which would be DELETE, is not mapped in the emulator.<br>
+The F1 key on the PS/2 keyboard brings up the emulator's OSD menu.
+
+
+<br><br>
+<h1>Remote keyboard</h1>
+Using the keyboard is allowed from the Visual Studio console or from a putty terminal.<br>
+The remote keyboard does not have the same response as a real keyboard, since key commands are sent, and not a map of pressed characters.<br>
+It cannot be used in the Arduino IDE console, because it always waits for ENTER to be sent to accept commands.<br>
+We have to activate the <b>use_lib_log_keyboard_uart</b> pragma in <b>gbConfig.h</b>, compile and run.<br>
+Not all the keys are mapped, and it is something basic, useful for testing, without failing to use the real PS/2 keyboard. 
+
+| PC keys           | Function                   |
+| ----------------- | -------------------------- |
+| F2 or TAB         | Shows the OSD menu         |
+| ESC               | Exit menu                  |
+| Above             | Above                      |
+| Below             | Below                      |
+| Left              | Left                       |
+| Right             | Right                      |
+| Delete or DEL     | Delete                     |
+| ENTER             | ENTER                      |
+| 0 .. 9            | 0 .. 9                     |
+| A .. Z            | A .. Z                     |
+| .                 | .                          |
+| -                 | Left shift                 |
+
+If we press the '-' at the same time as another key, for example, the 'A' is the equivalent of pressing (SHIFT + A) in the emulator.
