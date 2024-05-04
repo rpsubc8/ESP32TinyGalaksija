@@ -346,7 +346,34 @@ There are more options.
 
 <br><br>
 <h1>Tool data2h</h1>
+I have created a very basic tool (win32) to convert .GTP and .GAL files into .h in ready mode to be processed by the emulator.<br>
+It is recommended to have short file names. Additionally, the tool cuts to 32 characters to display in the OSD.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewWinData2h.gif'></center>
+We just have to leave the .GAL and .GTP files in the <b>input/GAL</b> folder and <b>input/GTP</b> run the <b>data2h.exe</b> file , so that an output will be generated in the <b>output/dataFlash</b> directory.<a href='https://github.com/rpsubc8/ESP32TinyGalaksija/tree/main/esp32/tools/data2h'>Tool data2h</a><br><br>
+<pre>
+ input/
+  gal/
+  gtp/
+ output/
+  dataFlash/
+   gal/
+   gtp/ 
+</pre>
+Later we must copy the <b>dataFlash</b> directory to the <b>TinyGalaksijattgovga32\galaksija</b> project, overwriting the previous dataFlash folder. It is recommended to clean the project and compile again.<br>
+This tool is very simple, and does not control errors, so it is recommended to leave the files with very simple names and as simple as possible.<br>
+Since the source code is available, it can be compiled for Linux or for Android under Termux. In Termux we have to install the <b>gcc</b> or <b>clang</b> package and compile:<br>
+<pre>
+ gcc -s data2h.cpp -odata2h.a
+</pre>
+It must be done from the home data directory of the Android device, so if we do it in any other directory, the <b>data2h.a</b> created will never be able to be executed, unless the device is rooted.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewTermuxData2h.gif'></center>
+The project in PLATFORM.IO is prepared for 1 MB of Flash. If we need the 4MB of flash, we will have to modify the entry in the <b>platformio.ini</b> file
+<pre>board_build.partitions = huge_app.csv</pre>
+In the Arduino IDE, we must choose the <b>Partition Scheme (Huge APP)</b> option.
 
+
+<br><br>
+<h1>DIY circuit</h1>
 
 
 
