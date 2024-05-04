@@ -258,3 +258,100 @@ Not all the keys are mapped, and it is something basic, useful for testing, with
 | -                 | Left shift                 |
 
 If we press the '-' at the same time as another key, for example, the 'A' is the equivalent of pressing (SHIFT + A) in the emulator.
+
+
+<br><br>
+<h1>GPIO</h1>
+The <b>hardware.h</b> file contains what is needed for the GPIO of:
+<ul>
+ <li>
+  <b>Keyboard:</b>
+  <ul>
+   <li>KEYBOARD_DATA - (32)</li>
+   <li>KEYBOARD_CLK - (33)</li>
+  </ul> 
+ </li> 
+ <li>
+  <b>VGA syncs:</b>
+  <ul>
+   <li>HSYNC_PIN - (23)</li>
+   <li>VSYNC_PIN - (15)</li>
+  </ul>
+ </li>
+ <li>
+  <b>VGA red</b> 
+  <ul>
+   <li>PIN_RED_LOW - (21)</li>
+   <li>PIN_RED_HIGH -(22)</li>
+  </ul>
+ </li>
+ <li>
+  <b>VGA green</b> 
+  <ul>
+   <li>PIN_GREEN_LOW - (18)</li>
+   <li>PIN_GREEN_HIGH - (19)</li>
+  </ul>
+ <li>
+  <b>VGA blue</b>
+  <ul>
+   <li>PIN_BLUE_LOW - (4)</li>
+   <li>PIN_BLUE_HIGH - (5)</li>
+  </ul>
+</ul>
+It is designed for the TTGO VGA v1.2 board, so if we have another type of board, this is where we must define the changes.<br>
+When we use 6 bpp, we are using all the VGA GPIOs, but when we use 3 bpp, we only use:
+<ul>
+ <li>PIN_RED_HIGH - (22)</li>
+ <li>PIN_GREEN_HIGH - (19)</li>
+ <li>PIN_BLUE_HIGH - (5)</li>
+</ul>
+
+
+<br><br>
+<h1>Options</h1>
+The options are selected in the <b>gbConfig.h file</b>:
+We can choose the time (milliseconds) to be able to select the video mode during boot:
+<ul>
+ <li><b>use_lib_boot_time_select_vga:</b> The higher the value, the longer it will take to boot. If during this time, we press the keys from 0 to 9 or the letters from A to F, we will be choosing a video mode. It is also valid for reboot.</li>
+</ul>
+We have the possibility of choosing one of the 16 possible default video modes, that is, by compilation, and that is the one that starts by default when the board starts up (360x200):
+<ul>
+ <li><b>use_lib_boot_vga_360x200x70hz_bitluni_3bpp:</b> 360x200 8 colors.</li>
+ <li><b>use_lib_boot_vga_360x200x70hz_bitluni_apll_3bpp:</b> 360x200 8 colors apll correction, for ESP32 that hang.</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_bitluni_3bpp:</b> 320x200 8 colors.</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_fabgl_3bpp:</b> 320x200 8 colors with fabgl parameters.</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_bitluni_apll_3bpp:</b> 320x200 8 colors apll correction, for ESP32 that hang.</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_bitluni_3bpp:</b> 320x240 8 colors.</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_fabgl_3bpp:</b> 320x240 8 colors with fabgl parameters.</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_bitluni_apll_3bpp:</b> 320x240 8 colors apll correction, for ESP32 that hang.</li>
+ <li><b>use_lib_boot_vga_360x200x70hz_bitluni_6bpp:</b> 360x200 64 colors</li>
+ <li><b>use_lib_boot_vga_360x200x70hz_bitluni_apll_6bpp:</b> 360x200 64 colors apll correction, for ESP32 that hang.</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_bitluni_6bpp:</b> 320x200 64 colors</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_fabgl_6bpp:</b> 320x200 64 colors with fabgl parameters.</li>
+ <li><b>use_lib_boot_vga_320x200x70hz_bitluni_apll_6bpp:</b> 320x200 64 colors apll correction, for ESP32 that hang.</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_bitluni_6bpp:</b> 320x240 64 colors</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_fabgl_6bpp:</b> 320x240 64 colors with fabgl parameters.</li>
+ <li><b>use_lib_boot_vga_320x240x60hz_bitluni_apll_6bpp:</b> 320x240 64 colors apll correction, for ESP32 that hang.</li>
+</ul>
+As expected, you cannot select all the modes at the same time, so you must uncomment the one you want, and comment on the rest.<br>
+There are more options.
+<ul> 
+ <li><b>use_lib_log_serial:</b> Logs are sent via USB serial port.</li>
+ <li><b>use_lib_fix_double_precision:</b> Do not use FPU for PLL calculation.</li>
+ <li><b>use_lib_debug_i2s:</b> Detailed information of video mode initialization.</li>
+ <li><b>use_lib_keyboard_uart:</b> Allows you to use a remote keyboard via UART via putty or the VStudio console.</li>
+ <li><b>use_lib_log_keyboard_uart:</b> The remote keyboard trace.</li>
+</ul>
+
+
+<br><br>
+<h1>Tool data2h</h1>
+
+
+
+
+
+
+
+
+
