@@ -374,11 +374,16 @@ In the Arduino IDE, we must choose the <b>Partition Scheme (Huge APP)</b> option
 
 <br><br>
 <h1>DIY circuit</h1>
+If we don't want to use a TTGO VGA32 v1.x board, we can build it following <b>fabgl's</b> schematic:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/fabglcircuit.gif'></center>
 
 
-
-
-
-
+<br><br>
+<h1>Minimalist version</h1>
+A minimalist version can be made, without resistors, capacitors, and so on, only with direct connectors and cables, at least in the case of 8 colors and a single keyboard:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/minimalfabglcircuit.gif'></center>
+It only works for PS/2 keyboards that can be powered at 3.3v, which although there are a few, tends to exclude especially the very old ones, as well as the modern ones with lights. The audio output (not required in the emulator), is intended for headphones, and will be quite low. Make sure that if we connect an audio amplifier of dubious condition or something similar, as it does not have resistors, we could be scared.<br>
+The VGA video output is for 8 colors (3 pins). The same thing, if we connect a monitor of questionable condition, although the VGA is for output, we could be scared.<br><br>
+<b>Although it is very simple, it requires minimal knowledge of electronics, so if you don't know what you are doing, it is better not to do anything. I ignore what may happen.</b>
 
 
