@@ -128,7 +128,7 @@ Then we will proceed to compile and upload to the board. No partitions are used,
 <h1>Arduino IDE</h1>
 The entire project is compatible with Arduino 1.8.11 framework. We just have to open <b>galaksija.ino</b> from the <b>galaksija</b> directory.
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewArduinoIDEpreferences.gif'></center>
-We must install the spressif extensions in the additional card url manager <b>https://dl.espressif.com/dl/package_esp32_index.json</b><br>
+We must install the Espressif extensions in the additional card url manager <b>https://dl.espressif.com/dl/package_esp32_index.json</b><br>
 The project is already prepared, so no bitluni or fabgl library is needed. We must disable the PSRAM option, and if the binary exceeds 1 MB, select 4 MB partition when uploading. Although the code does not use PSRAM, if the option is active and our ESP32 does not have it, an exception will be generated and it will restart in loop mode.
 
 
