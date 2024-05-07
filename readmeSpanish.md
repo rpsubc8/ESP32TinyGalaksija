@@ -131,7 +131,7 @@ Está todo preparado para no tener que instalar las librerias de bitluni ni fabg
 Todo el proyecto es compatible con la estructura de Arduino 1.8.11.
 Tan sólo tenemos que abrir el <b>galaksija.ino</b> del directorio <b>galaksija</b>.
 <center><img src='https://raw.githubusercontent.com/rpsubc8/ESP32TinyGalaksija/main/preview/previewArduinoIDEpreferences.gif'></center>
-Debemos instalar las extensiones de spressif en el gestor de urls adicionales de tarjetas <b>https://dl.espressif.com/dl/package_esp32_index.json</b>
+Debemos instalar las extensiones de Espressif en el gestor de urls adicionales de tarjetas <b>https://dl.espressif.com/dl/package_esp32_index.json</b>
 <br>
 Ya está preparado el proyecto, de forma que no se necesita ninguna librería de bitluni ni fabgl.
 Debemos desactivar la opción de PSRAM, y en caso de superar 1 MB de binario, seleccionar 4 MB de partición a la hora de subir. Aunque el código no use PSRAM, si la opción está activa y nuestro ESP32 no dispone de ella, se generará una excepción y reinicio del mismo en modo bucle.
