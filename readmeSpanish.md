@@ -211,6 +211,14 @@ Se han puesto las estadísticas a la derecha y en vertical, para no interferir e
   
 
 <br><br>
+<h1>Test teclado PS/2</h1>
+Para testear un teclado PS/2:<br><br>
+<a href='https://github.com/rpsubc8/testkeyboardPS2'>https://github.com/rpsubc8/testkeyboardPS2</a>
+
+
+
+
+<br><br>
 <h1>Teclado PS/2</h1>
 Se requiere un teclado 100% PS/2, y que no requiera comando de inicialización.<br>
 El Galaksija tiene un buffer para teclas pulsadas de 54 elementos.<br>
