@@ -203,6 +203,15 @@ The statistics have been placed on the right and vertically, so as not to interf
 | F     | Real FPS we are actually dumping the video at                                                    |
 
 
+
+<br><br>
+<h1>Test keyboard PS/2</h1>
+To test a PS/2 keyboard:<br><br>
+<a href='https://github.com/rpsubc8/testkeyboardPS2'>https://github.com/rpsubc8/testkeyboardPS2</a>
+
+
+
+
 <br><br>
 <h1>PS/2 keyboard</h1>
 A 100% PS/2 keyboard is required, and does not require an initialization command.<br>
